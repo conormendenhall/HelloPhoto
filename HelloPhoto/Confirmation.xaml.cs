@@ -13,22 +13,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace HelloPhoto
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
-            this.InitializeComponent();
-        }
-		private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+	public sealed partial class Confirmation : Page
+	{
+		public Confirmation()
 		{
-			this.Frame.Navigate(typeof(Login));
+			this.InitializeComponent();
 		}
 
 		private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

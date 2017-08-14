@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Welcome to QL Tech Con" VerticalAlignment="Top" Height="502" Width="1900" SelectionChanged="TextBlock_SelectionChanged" Foreground="#FF0080FF" FontSize="72" TextAlignment="Center"/>
+        <HyperlinkButton Click="HyperlinkButton_Click" Content="Touch here to take photo" HorizontalAlignment="Stretch" Margin="100,436,100,0" VerticalAlignment="Top" Height="578" FontSize="72" Background="#FFFFC68E"/>
     </Grid>
 </Page>
