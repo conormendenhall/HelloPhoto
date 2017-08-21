@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <!--Camera preview-->
+        <CaptureElement Name="PreviewControl" Stretch="Uniform"/>
         
         <Button Name="PhotoButton" Click="PhotoButton_Click" IsEnabled="False" Margin="10,800,0,10" Width="1900" Height="270">
             <Viewbox MaxHeight="40" MaxWidth="40">

@@ -12,8 +12,8 @@
         <!--Camera preview-->
         <CaptureElement Name="PreviewControl" Stretch="Uniform"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Welcome to QL Tech Con" VerticalAlignment="Top" Height="136" Width="1900" SelectionChanged="TextBlock_SelectionChanged" Foreground="#FF0080FF" FontSize="72" TextAlignment="Center"/>
-        <HyperlinkButton Click="HyperlinkButton_Click" Content="Touch here to take photo" HorizontalAlignment="Stretch" Margin="100,820,100,0" VerticalAlignment="Top" Height="194" FontSize="72" Background="#FFFFC68E"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Welcome to QL Tech Con" VerticalAlignment="Top" Height="136" Width="1900" SelectionChanged="TextBlock_SelectionChanged" Foreground="#FF0080FF" FontSize="72" TextAlignment="Center"/>
+        <HyperlinkButton Click="HyperlinkButton_Click" Content="Touch here to take photo" HorizontalAlignment="Stretch" Margin="100,946,100,0" VerticalAlignment="Top" Height="106" FontSize="72" Background="#FFFFC68E"/>
 
     </Grid>
 </Page>
