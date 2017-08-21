@@ -8,7 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox Margin="200,142,200,0" TextWrapping="Wrap" PlaceholderText="Touch here to enter email" InputScope="EmailNameOrAddress" VerticalAlignment="Top" Height="126" FontSize="72" TextChanged="TextBox_TextChanged"/>
+        <TextBox Margin="207,245,193,0" TextWrapping="Wrap" PlaceholderText="Touch here to enter email" InputScope="EmailSmtpAddress" VerticalAlignment="Top" Height="126" FontSize="72" TextChanged="TextBox_TextChanged"/>
+        <HyperlinkButton Click="HomeButton_Click" Content="Home" HorizontalAlignment="Stretch" Margin="1644,0,0,0" VerticalAlignment="Top" Height="194" FontSize="72" Background="#FFFFC68E"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="1415,376,0,0" VerticalAlignment="Top" Height="137" Width="312" Click="SubmitButton_Click"/>
 
     </Grid>
 </Page>

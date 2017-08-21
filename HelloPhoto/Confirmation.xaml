@@ -14,5 +14,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="1530,834,0,0" TextWrapping="Wrap" Text="#QLIT4lyfe" VerticalAlignment="Top" Height="176" Width="358" FontSize="72" SelectionChanged="TextBlock_SelectionChanged"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="758" Margin="42,32,0,0" Stroke="Black" VerticalAlignment="Top" Width="1846"/>
 
+        <HyperlinkButton Click="HomeButton_Click" Content="Home" HorizontalAlignment="Stretch" Margin="1596,0,0,0" VerticalAlignment="Top" Height="194" FontSize="72" Background="#FFFFC68E"/>
+        <HyperlinkButton Click="RetakeButton_Click" Content="Retake" HorizontalAlignment="Stretch" Margin="1596,226,0,0" VerticalAlignment="Top" Height="194" FontSize="72" Background="#FFFFC68E"/>
+
     </Grid>
 </Page>

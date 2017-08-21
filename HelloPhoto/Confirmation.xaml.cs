@@ -31,5 +31,19 @@ namespace HelloPhoto
 		{
 
 		}
+
+		#region Navigation
+
+		private void HomeButton_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(MainPage));
+		}
+
+		private void RetakeButton_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(PhotoBooth));
+		}
+
+		#endregion Navigation
 	}
 }
