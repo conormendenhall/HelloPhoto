@@ -106,9 +106,13 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="PhotoBooth.xaml.cs">
       <DependentUpon>PhotoBooth.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\ContactRepository.cs" />
+    <Compile Include="Repositories\PhotoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

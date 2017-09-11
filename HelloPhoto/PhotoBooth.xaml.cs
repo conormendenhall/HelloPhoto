@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HelloPhoto.Models;
+using System;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
@@ -22,9 +19,6 @@ using Windows.System.Display;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -70,6 +64,8 @@ namespace HelloPhoto
 		// Rotation Helper to simplify handling rotation compensation for the camera streams
 		private CameraRotationHelper _rotationHelper;
 
+		private Contact _contact;
+
 		#region Constructor, lifecycle and navigation
 
 		public PhotoBooth()
@@ -107,6 +103,8 @@ namespace HelloPhoto
 			Window.Current.VisibilityChanged += Window_VisibilityChanged;
 
 			_isActivePage = true;
+			_contact = e.Parameter as Contact;
+
 			await SetUpBasedOnStateAsync();
 		}
 
@@ -380,7 +378,7 @@ namespace HelloPhoto
 
 			try
 			{
-				var file = await _captureFolder.CreateFileAsync("SimplePhoto.jpg", CreationCollisionOption.GenerateUniqueName);
+				var file = await _captureFolder.CreateFileAsync(_contact.Id, CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());

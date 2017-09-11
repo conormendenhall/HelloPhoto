@@ -1,19 +1,13 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 
 namespace HelloPhoto
 {
-	interface IPhotoRepository
-	{
-		HttpStatusCode Save(string filePath);
-	}
-
-	class PhotoRepository : IPhotoRepository
+	class PhotoRepository
 	{
 		public HttpStatusCode Save(string filePath)
 		{
-			HttpClient client = new HttpClient();
+			var client = new HttpClient();
 			var stringContent = new StringContent(filePath);
 
 			var result =

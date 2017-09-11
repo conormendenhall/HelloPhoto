@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using HelloPhoto.Models;
+using HelloPhoto.Repositories;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,26 +15,31 @@ namespace HelloPhoto
 	{
 		public Login()
 		{
-			this.InitializeComponent();
-		}
-
-		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-		{
-
+			InitializeComponent();
 		}
 
 		#region Navigation
 
 		private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
-			this.Frame.Navigate(typeof(MainPage));
+			Frame.Navigate(typeof(MainPage));
 		}
 
 		#endregion Navigation
 
 		private void SubmitButton_Click(object sender, RoutedEventArgs e)
 		{
-			this.Frame.Navigate(typeof(PhotoBooth));
+			ContactRepository _repo = new ContactRepository();
+
+			var contact = new Contact()
+			{
+				Id = Guid.NewGuid().ToString(),
+				Email = EmailInput.Text
+			};
+
+			_repo.Save(contact);
+
+			Frame.Navigate(typeof(PhotoBooth), contact);
 		}
 	}
 }
