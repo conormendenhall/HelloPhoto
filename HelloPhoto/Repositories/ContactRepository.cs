@@ -9,7 +9,7 @@ namespace HelloPhoto.Repositories
 {
 	class ContactRepository
 	{
-		public async Task<string> Save(Contact contact)
+		public async Task<Contact> Save(Contact contact)
 		{
 			var client = new HttpClient();
 
@@ -20,7 +20,7 @@ namespace HelloPhoto.Repositories
 
 			if(result.StatusCode == HttpStatusCode.OK)
 			{
-				return contact.Id;
+				return contact;
 			}
 
 			return null;

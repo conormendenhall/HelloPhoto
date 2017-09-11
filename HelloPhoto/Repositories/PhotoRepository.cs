@@ -1,19 +1,28 @@
-﻿using System.Net;
+﻿using HelloPhoto.Models;
+using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HelloPhoto
 {
 	class PhotoRepository
 	{
-		public HttpStatusCode Save(string filePath)
+		public async Task<Photo> Save(Photo photo)
 		{
 			var client = new HttpClient();
-			var stringContent = new StringContent(filePath);
+			var stringContent = new StringContent(JsonConvert.SerializeObject(photo), Encoding.UTF8, "application/json");
 
 			var result =
-				client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", stringContent).Result;
+				await client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", stringContent);
 
-			return result.StatusCode;
+			if (result.StatusCode == HttpStatusCode.OK)
+			{
+				return photo;
+			}
+
+			return null;
 		}
 	}
 }

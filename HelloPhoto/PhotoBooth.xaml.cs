@@ -1,7 +1,9 @@
 ﻿using HelloPhoto.Models;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
@@ -64,7 +66,7 @@ namespace HelloPhoto
 		// Rotation Helper to simplify handling rotation compensation for the camera streams
 		private CameraRotationHelper _rotationHelper;
 
-		private Contact _contact;
+		private string _contactId;
 
 		#region Constructor, lifecycle and navigation
 
@@ -103,7 +105,7 @@ namespace HelloPhoto
 			Window.Current.VisibilityChanged += Window_VisibilityChanged;
 
 			_isActivePage = true;
-			_contact = e.Parameter as Contact;
+			_contactId = e.Parameter as string;
 
 			await SetUpBasedOnStateAsync();
 		}
@@ -378,7 +380,14 @@ namespace HelloPhoto
 
 			try
 			{
-				var file = await _captureFolder.CreateFileAsync(_contact.Id, CreationCollisionOption.GenerateUniqueName);
+				using (var client = new HttpClient())
+				{
+					var inputData = new StreamContent(stream.AsStream());
+
+					var response = await client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", inputData);
+				}
+
+				var file = await _captureFolder.CreateFileAsync(_contactId, CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());

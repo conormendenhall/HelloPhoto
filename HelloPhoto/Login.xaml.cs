@@ -1,6 +1,7 @@
 ﻿using HelloPhoto.Models;
 using HelloPhoto.Repositories;
 using System;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -27,7 +28,14 @@ namespace HelloPhoto
 
 		#endregion Navigation
 
-		private void SubmitButton_Click(object sender, RoutedEventArgs e)
+		private async void SubmitButton_Click(object sender, RoutedEventArgs e)
+		{
+			var contact = await SaveContactAsync();
+
+			Frame.Navigate(typeof(PhotoBooth), contact);
+		}
+
+		private async Task<Contact> SaveContactAsync()
 		{
 			ContactRepository _repo = new ContactRepository();
 
@@ -37,9 +45,7 @@ namespace HelloPhoto
 				Email = EmailInput.Text
 			};
 
-			_repo.Save(contact);
-
-			Frame.Navigate(typeof(PhotoBooth), contact);
+			return await _repo.Save(contact);
 		}
 	}
 }
