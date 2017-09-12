@@ -8,48 +8,56 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
         <Image
             HorizontalAlignment="Left"
             Height="758"
-            Margin="42,32,0,0"
+            Margin="42,141,0,0"
             VerticalAlignment="Top"
             Width="1846"
             Loaded="Photo_Loaded"/>
+        
         <TextBlock
             HorizontalAlignment="Left"
-            Margin="42,834,0,0"
+            Margin="42,904,0,0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             Height="176"
             Width="1042"
             FontSize="72"
             Text="@IOTPhotoKiosk"/>
+        
         <TextBlock
             HorizontalAlignment="Left"
-            Margin="1478,834,0,0"
+            Margin="1478,904,0,0"
             TextWrapping="Wrap"
             Text="#QLTechCon"
             VerticalAlignment="Top"
             Height="176"
             Width="410"
             FontSize="72"/>
-        <HyperlinkButton
+
+        <Button
             Click="HomeButton_Click"
             Content="Home"
             HorizontalAlignment="Stretch"
-            Margin="1596,0,0,0"
+            Margin="0,0,1644,0"
             VerticalAlignment="Top"
             Height="194"
             FontSize="72"
-            Background="#FFFFC68E"/>
-        <HyperlinkButton
+            Background="Black"
+            Foreground="White" />
+
+        <Button
             Click="RetakeButton_Click"
             Content="Retake"
             HorizontalAlignment="Stretch"
-            Margin="1596,226,0,0"
+            Margin="1644,0,0,0"
             VerticalAlignment="Top"
             Height="194"
             FontSize="72"
-            Background="#FFFFC68E"/>
+            Background="#FFFF5ABC"
+            Foreground="White" />
+        
     </Grid>
 </Page>

@@ -7,27 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+        Grid.Column="1"
+        Grid.Row="0">
 
         <!--Camera preview-->
-        <CaptureElement Name="PreviewControl"
-                        Stretch="Uniform"/>
-        
-        <HyperlinkButton Click="HyperlinkButton_Click"
-                         Content="Touch here to take photo"
-                         HorizontalAlignment="Stretch"
-                         Margin="100,824,100,0"
-                         VerticalAlignment="Top"
-                         Height="228"
-                         FontSize="72"
-                         Background="#FFFFC68E"/>
-        <Image
-            HorizontalAlignment="Left"
-            Height="282"
-            Margin="328,150,0,0"
-            VerticalAlignment="Top"
-            Width="1228"
-            Source="/Assets/tech-con-logo.png"/>
+        <CaptureElement
+            Name="PreviewControl"
+            Stretch="Uniform" />
 
+        <Image
+            HorizontalAlignment="Center"
+            Width="1228"
+            Margin="0,50,0,500"
+            Grid.Row="0"
+            Grid.Column="1"
+            Source="/Assets/tech-con-logo.png" />
+
+        <Button
+            Content="Touch screen to take photo"
+            HorizontalAlignment="Stretch"
+            Margin="0,782,0,0"
+            VerticalAlignment="Stretch"
+            FontSize="100"
+            Foreground="White"
+            FontWeight="Thin"
+            Background="#FFFF5ABC">
+        </Button>
+
+        <HyperlinkButton
+            Click="HyperlinkButton_Click"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Transparent" />
     </Grid>
 </Page>

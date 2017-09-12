@@ -11,14 +11,36 @@
 
         <!--Camera preview-->
         <CaptureElement Name="PreviewControl" Stretch="Uniform"/>
+
+        <Button
+            Content="Touch screen to take photo"
+            HorizontalAlignment="Stretch"
+            Margin="0,777,0,0"
+            VerticalAlignment="Stretch"
+            FontSize="100"
+            Foreground="#FFFF00B9"
+            Background="Transparent"
+            FontWeight="Bold"/>
+
+        <Button
+            Click="PhotoButton_Click"
+            Name="PhotoButton"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontSize="100"
+            Foreground="#FFFF00B9"
+            FontWeight="Bold" Background="#00000000"/>
+
+        <Button
+            Click="HomeButton_Click"
+            Content="Home"
+            HorizontalAlignment="Stretch"
+            Margin="0,0,1644,0"
+            VerticalAlignment="Top"
+            Height="194"
+            FontSize="72"
+            Background="Black"
+            Foreground="White" /> 
         
-        <Button Name="PhotoButton" Click="PhotoButton_Click" IsEnabled="False" Margin="10,800,0,10" Width="1900" Height="270">
-            <Viewbox MaxHeight="40" MaxWidth="40">
-                <SymbolIcon Symbol="Camera"/>
-            </Viewbox>
-        </Button>
-        
-        <HyperlinkButton Click="HomeButton_Click" Content="Home" HorizontalAlignment="Stretch" Margin="1627,10,0,0" VerticalAlignment="Top" Height="194" FontSize="72" Background="#FFFFC68E"/>
-   
     </Grid>
 </Page>
