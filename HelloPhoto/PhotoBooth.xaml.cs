@@ -159,8 +159,8 @@ namespace HelloPhoto
 
 		private async void PhotoButton_Click(object sender, RoutedEventArgs e)
 		{
-			await TakePhotoAsync();
-			this.Frame.Navigate(typeof(Confirmation));
+			var photoPath = await TakePhotoAsync();
+			this.Frame.Navigate(typeof(Confirmation), photoPath);
 		}
 
 		//private async void VideoButton_Click(object sender, RoutedEventArgs e)
@@ -365,7 +365,7 @@ namespace HelloPhoto
 		/// Takes a photo to a StorageFile and adds rotation metadata to it
 		/// </summary>
 		/// <returns></returns>
-		private async Task TakePhotoAsync()
+		private async Task<string> TakePhotoAsync()
 		{
 			// While taking a photo, keep the video button enabled only if the camera supports simultaneously taking pictures and recording video
 			//VideoButton.IsEnabled = _mediaCapture.MediaCaptureSettings.ConcurrentRecordAndPhotoSupported;
@@ -380,12 +380,14 @@ namespace HelloPhoto
 
 			try
 			{
-				using (var client = new HttpClient())
-				{
-					var inputData = new StreamContent(stream.AsStream());
+				// Save the photo to the S3
 
-					var response = await client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", inputData);
-				}
+				//using (var client = new HttpClient())
+				//{
+				//	var inputData = new StreamContent(stream.AsStream());
+
+				//	var response = await client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", inputData);
+				//}
 
 				var file = await _captureFolder.CreateFileAsync(_contactId, CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
@@ -394,6 +396,8 @@ namespace HelloPhoto
 
 				await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
 				Debug.WriteLine("Photo saved!");
+
+				return file.Path;
 			}
 			catch (Exception ex)
 			{
@@ -404,6 +408,8 @@ namespace HelloPhoto
 			// Done taking a photo, so re-enable the button
 			//VideoButton.IsEnabled = true;
 			//VideoButton.Opacity = 1;
+
+			return null;
 		}
 
 		/// <summary>

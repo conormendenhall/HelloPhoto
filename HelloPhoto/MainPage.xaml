@@ -13,25 +13,21 @@
         <CaptureElement Name="PreviewControl"
                         Stretch="Uniform"/>
         
-        <TextBlock HorizontalAlignment="Left"
-                   Margin="10,0,0,0"
-                   TextWrapping="Wrap"
-                   Text="Welcome to QL Tech Con"
-                   VerticalAlignment="Top"
-                   Height="136"
-                   Width="1900"
-                   SelectionChanged="TextBlock_SelectionChanged"
-                   Foreground="#FF0080FF"
-                   FontSize="72"
-                   TextAlignment="Center"/>
         <HyperlinkButton Click="HyperlinkButton_Click"
                          Content="Touch here to take photo"
                          HorizontalAlignment="Stretch"
-                         Margin="100,946,100,0"
+                         Margin="100,824,100,0"
                          VerticalAlignment="Top"
-                         Height="106"
+                         Height="228"
                          FontSize="72"
                          Background="#FFFFC68E"/>
+        <Image
+            HorizontalAlignment="Left"
+            Height="282"
+            Margin="328,150,0,0"
+            VerticalAlignment="Top"
+            Width="1228"
+            Source="/Assets/tech-con-logo.png"/>
 
     </Grid>
 </Page>
