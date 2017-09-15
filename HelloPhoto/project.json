@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "AWSSDK.S3": "3.3.11",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
     "Newtonsoft.Json": "10.0.3"
   },
