@@ -10,7 +10,6 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         
         <TextBox x:Name="EmailInput"
-                 Margin="207,407,193,0"
                  TextWrapping="Wrap"
                  PlaceholderText="Touch here to enter email"
                  InputScope="EmailSmtpAddress"
@@ -33,12 +32,12 @@
             Click="SubmitButton_Click"
             Content="Submit"
             HorizontalAlignment="Stretch"
-            Margin="207,538,193,416"
-            VerticalAlignment="Stretch"
+            VerticalAlignment="Center"
             FontSize="72"
             Foreground="White"
             FontWeight="Thin"
-            Background="#FFFF5ABC" />
+            Background="#FFF70097"
+            Height="172" />
 
     </Grid>
 </Page>

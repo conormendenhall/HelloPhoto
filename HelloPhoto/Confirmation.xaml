@@ -5,43 +5,41 @@
     xmlns:local="using:HelloPhoto"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         
         <Image
-            HorizontalAlignment="Left"
-            Height="758"
-            Margin="42,141,0,0"
+            Name="ConfirmationPhoto"
+            HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
-            Width="1846"
-            Loaded="Photo_Loaded"/>
+            Height="758"/>
         
         <TextBlock
             HorizontalAlignment="Left"
-            Margin="42,904,0,0"
+            VerticalAlignment="Bottom"
             TextWrapping="Wrap"
-            VerticalAlignment="Top"
             Height="176"
             Width="1042"
             FontSize="72"
-            Text="@IOTPhotoKiosk"/>
+            Text="@IOTPhotoKiosk"
+            Foreground="#FFF70097"/>
         
         <TextBlock
-            HorizontalAlignment="Left"
-            Margin="1478,904,0,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
             TextWrapping="Wrap"
             Text="#QLTechCon"
-            VerticalAlignment="Top"
             Height="176"
             Width="410"
-            FontSize="72"/>
+            FontSize="72"
+            Foreground="#FFF70097"/>
 
         <Button
             Click="HomeButton_Click"
             Content="Home"
-            HorizontalAlignment="Stretch"
-            Margin="0,0,1644,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Height="194"
             FontSize="72"
@@ -51,12 +49,11 @@
         <Button
             Click="RetakeButton_Click"
             Content="Retake"
-            HorizontalAlignment="Stretch"
-            Margin="1644,0,0,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Height="194"
             FontSize="72"
-            Background="#FFFF5ABC"
+            Background="#FFF70097"
             Foreground="White" />
         
     </Grid>

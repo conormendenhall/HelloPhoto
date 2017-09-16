@@ -29,17 +29,19 @@ namespace HelloPhoto
 			Frame.Navigate(typeof(PhotoBooth));
 		}
 
-		private void Photo_Loaded(object sender, RoutedEventArgs e)
+		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			Image img = sender as Image;
+			var img = sender as Image;
 
 			//img.Width = bitmapImage.DecodePixelWidth = 80; //natural px width of image source
-															// don't need to set Height, system maintains aspect ratio, and calculates the other
-															// dimension, so long as one dimension measurement is provided
-			BitmapImage bitmapImage = new BitmapImage
-			{
-				UriSource = new Uri(img.BaseUri, "/Assets/StoreLogo.png")
-			};
+			// don't need to set Height, system maintains aspect ratio, and calculates the other
+			// dimension, so long as one dimension measurement is provided
+			//var bmp = new BitmapImage
+			//{
+			//	UriSource = new Uri(img.BaseUri.AbsoluteUri)
+			//};
+
+			//ConfirmationPhoto.Source = sender;
 		}
 
 		#endregion Navigation

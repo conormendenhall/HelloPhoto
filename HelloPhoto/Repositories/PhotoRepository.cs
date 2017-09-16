@@ -1,8 +1,4 @@
 ﻿using HelloPhoto.Models;
-using Newtonsoft.Json;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -30,7 +26,7 @@ namespace HelloPhoto
             {
                 BucketName = "hellophoto-det",
                 Key = photo.PhotoId.ToString(),
-                FilePath = //FilePath
+                FilePath = photo.FilePath
             };
             PutObjectResponse response2 = await client.PutObjectAsync(request);
 

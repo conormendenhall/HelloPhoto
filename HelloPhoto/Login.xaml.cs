@@ -42,7 +42,7 @@ namespace HelloPhoto
 			var contact = new Contact()
 			{
 				Id = Guid.NewGuid().ToString(),
-				Email = EmailInput.Text
+				Email = string.IsNullOrWhiteSpace(EmailInput?.Text) ? "photobooth_image" : EmailInput.Text
 			};
 
 			return await _repo.Save(contact);

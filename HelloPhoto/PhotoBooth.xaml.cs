@@ -104,8 +104,10 @@ namespace HelloPhoto
 			Application.Current.Resuming += Application_Resuming;
 			Window.Current.VisibilityChanged += Window_VisibilityChanged;
 
+			var contact = e.Parameter as Contact;
+
 			_isActivePage = true;
-			_contactId = e.Parameter as string;
+			_contactId = contact?.Email ?? "contactId";
 
 			await SetUpBasedOnStateAsync();
 		}
@@ -260,7 +262,7 @@ namespace HelloPhoto
 						_externalCamera = false;
 
 						// Only mirror the preview if the camera is on the front panel
-						_mirroringPreview = (cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Front);
+						_mirroringPreview = true; //(cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Front);
 					}
 
 					// Initialize rotationHelper
@@ -389,13 +391,21 @@ namespace HelloPhoto
 				//	var response = await client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", inputData);
 				//}
 
-				var file = await _captureFolder.CreateFileAsync(_contactId, CreationCollisionOption.GenerateUniqueName);
+				var file = await _captureFolder.CreateFileAsync(_contactId + ".jpg", CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());
 
 				await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
 				Debug.WriteLine("Photo saved!");
+
+				var _photoRepo = new PhotoRepository();
+
+				_photoRepo.Save(new Photo()
+				{
+					PhotoId = Guid.NewGuid(),
+					FilePath = file.Path,
+				});
 
 				return file.Path;
 			}
@@ -681,16 +691,6 @@ namespace HelloPhoto
 		private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
 			this.Frame.Navigate(typeof(MainPage));
-		}
-
-		private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
-		{
-			this.Frame.Navigate(typeof(Login));
-		}
-
-		private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-		{
-
 		}
 
 		#endregion Navigation

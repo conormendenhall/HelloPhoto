@@ -25,21 +25,31 @@
             Grid.Column="1"
             Source="/Assets/tech-con-logo.png" />
 
-        <Button
+        <!--<Button
             Content="Touch screen to take photo"
             HorizontalAlignment="Stretch"
-            Margin="0,782,0,0"
-            VerticalAlignment="Stretch"
             FontSize="100"
             Foreground="White"
             FontWeight="Thin"
-            Background="#FFFF5ABC">
-        </Button>
+            Background="#FFF70097">
+        </Button>-->
+
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            TextWrapping="Wrap"
+            Text="Touch screen to take photo"
+            Height="208"
+            Width="1920"
+            FontSize="100"
+            TextAlignment="Center"
+            Foreground="#FFF70097" />
 
         <HyperlinkButton
             Click="HyperlinkButton_Click"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Background="Transparent" />
+            Background="Transparent" >
+        </HyperlinkButton>
     </Grid>
 </Page>

@@ -12,15 +12,17 @@
         <!--Camera preview-->
         <CaptureElement Name="PreviewControl" Stretch="Uniform"/>
 
+        <!--Overlay-->
+        <!--<Image Source="Assets/tech-con-transparent.png" HorizontalAlignment="Left" Height="1054" VerticalAlignment="Top" Width="1920" Margin="0,486,0,-460"/>-->
+
         <Button
             Content="Touch screen to take photo"
             HorizontalAlignment="Stretch"
-            Margin="0,777,0,0"
-            VerticalAlignment="Stretch"
+            VerticalAlignment="Top"
             FontSize="100"
-            Foreground="#FFFF00B9"
+            Foreground="#FFF70097"
             Background="Transparent"
-            FontWeight="Bold"/>
+            FontWeight="Bold" />
 
         <Button
             Click="PhotoButton_Click"
@@ -29,18 +31,18 @@
             VerticalAlignment="Stretch"
             FontSize="100"
             Foreground="#FFFF00B9"
-            FontWeight="Bold" Background="#00000000"/>
+            FontWeight="Bold"
+            Background="Transparent"/>
 
         <Button
             Click="HomeButton_Click"
             Content="Home"
-            HorizontalAlignment="Stretch"
-            Margin="0,0,1644,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Height="194"
             FontSize="72"
             Background="Black"
-            Foreground="White" /> 
-        
+            Foreground="White" />
+
     </Grid>
 </Page>
