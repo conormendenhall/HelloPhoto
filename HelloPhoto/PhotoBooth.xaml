@@ -16,13 +16,15 @@
         <!--<Image Source="Assets/tech-con-transparent.png" HorizontalAlignment="Left" Height="1054" VerticalAlignment="Top" Width="1920" Margin="0,486,0,-460"/>-->
 
         <Button
+            Name="PhotoMessage"
             Content="Touch screen to take photo"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             FontSize="100"
             Foreground="#EC2B8C"
             Background="Transparent"
-            FontWeight="Bold" />
+            FontWeight="Bold"
+            Height="300"/>
 
         <Button
             Click="PhotoButton_Click"

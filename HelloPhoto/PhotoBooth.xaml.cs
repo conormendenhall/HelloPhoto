@@ -164,11 +164,11 @@ namespace HelloPhoto
 			// disable button
 			PhotoButton.IsEnabled = false;
 
+			// hide "Touch screen to take photo" message
+			PhotoMessage.Visibility = Visibility.Collapsed;
+
 			// countdown from 5
 			BeginTimer();
-
-			// show white screen for flash
-
 		}
 
 		private void Timer_Tick(object sender, object e)
@@ -185,8 +185,7 @@ namespace HelloPhoto
 			{
 				_timer.Stop();
 
-				var photoPath = TakePhotoAsync();
-				this.Frame.Navigate(typeof(Confirmation), photoPath);
+				TakePhotoAsync();
 			}
 		}
 
@@ -452,7 +451,7 @@ namespace HelloPhoto
 		/// Takes a photo to a StorageFile and adds rotation metadata to it
 		/// </summary>
 		/// <returns></returns>
-		private async Task<string> TakePhotoAsync()
+		private async void TakePhotoAsync()
 		{
 			// While taking a photo, keep the video button enabled only if the camera supports simultaneously taking pictures and recording video
 			//VideoButton.IsEnabled = _mediaCapture.MediaCaptureSettings.ConcurrentRecordAndPhotoSupported;
@@ -470,6 +469,8 @@ namespace HelloPhoto
 				var file = await _captureFolder.CreateFileAsync("kiosk\\"+_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
+				this.Frame.Navigate(typeof(Confirmation), file.Path);
+
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());
 
 				await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
@@ -484,8 +485,6 @@ namespace HelloPhoto
 						FilePath = file.Path,
 					});
 				});
-               
-				return file.Path;
 			}
 			catch (Exception ex)
 			{
@@ -496,8 +495,6 @@ namespace HelloPhoto
 			// Done taking a photo, so re-enable the button
 			//VideoButton.IsEnabled = true;
 			//VideoButton.Opacity = 1;
-
-			return null;
 		}
 
 		/// <summary>

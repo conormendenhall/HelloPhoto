@@ -8,16 +8,24 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
         <TextBox x:Name="EmailInput"
                  TextWrapping="Wrap"
                  PlaceholderText="Touch here to enter email"
                  InputScope="EmailSmtpAddress"
-                 VerticalAlignment="Top"
-                 Height="126"
+                 VerticalAlignment="Center"
                  FontSize="72"
-                 Margin="225"/>
-        
+                 Margin="250"/>
+
+        <Button
+            Click="SubmitButton_Click"
+            Content="Submit"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            FontSize="72"
+            Foreground="White"
+            FontWeight="Thin"
+            Background="#EC2B8C" />
+
         <Button
             Click="HomeButton_Click"
             Content="Home"
@@ -28,17 +36,6 @@
             FontSize="72"
             Background="Black"
             Foreground="White" />
-
-        <Button
-            Click="SubmitButton_Click"
-            Content="Submit"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            FontSize="72"
-            Foreground="White"
-            FontWeight="Thin"
-            Background="#EC2B8C"
-            Height="172" />
 
     </Grid>
 </Page>
