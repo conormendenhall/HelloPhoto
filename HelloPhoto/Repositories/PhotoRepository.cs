@@ -21,7 +21,7 @@ namespace HelloPhoto
 		    };
 
             IAmazonS3 client;
-            using (client = new AmazonS3Client("sss", "ssssS", S3Config))
+            using (client = new AmazonS3Client("sss", "ssss", S3Config))
             {
                 Debug.WriteLine("Uploading an object");
                 try

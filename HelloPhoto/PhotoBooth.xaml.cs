@@ -31,11 +31,9 @@ namespace HelloPhoto
 	/// </summary>
 	public sealed partial class PhotoBooth : Page
 	{
-
-
-		// Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
-		// Reference: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh868174.aspx
-		private static readonly Guid RotationKey = new Guid("C380465D-2271-428C-9B83-ECEA3B4A85C1");
+        // Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
+        // Reference: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh868174.aspx
+        private static readonly Guid RotationKey = new Guid("C380465D-2271-428C-9B83-ECEA3B4A85C1");
 
 		// Folder in which the captures will be stored (initialized in SetupUiAsync)
 		private StorageFolder _captureFolder = null;
@@ -276,8 +274,8 @@ namespace HelloPhoto
 
 				var settings = new MediaCaptureInitializationSettings { VideoDeviceId = cameraDevice.Id };
 
-				// Initialize MediaCapture
-				try
+                // Initialize MediaCapture
+                try
 				{
 					await _mediaCapture.InitializeAsync(settings);
 					_isInitialized = true;
@@ -290,8 +288,23 @@ namespace HelloPhoto
 				// If initialization succeeded, start the preview
 				if (_isInitialized)
 				{
-					// Figure out where the camera is located
-					if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
+				    // get available resolutions
+				    var resolutions = _mediaCapture.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.Photo).ToList();
+
+
+				    //var res = resolutions.Select(x => ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Height + "x" +
+				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Width + " - " +
+				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Bitrate + " - " +
+				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties)x).FrameRate.Numerator + " - " +
+				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties)x).FrameRate.Denominator);
+
+				    //var nice = string.Join("\r\n",res.ToList());
+                    
+				    // set used resolution
+				    await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
+
+                    // Figure out where the camera is located
+                    if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
 					{
 						// No information on the location of the camera, assume it's an external camera, not integrated on the device
 						_externalCamera = true;
