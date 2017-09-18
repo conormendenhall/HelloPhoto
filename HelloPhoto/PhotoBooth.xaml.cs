@@ -167,6 +167,9 @@ namespace HelloPhoto
 
 			// countdown from 5
 			BeginTimer();
+
+			// show white screen for flash
+
 		}
 
 		private void Timer_Tick(object sender, object e)
@@ -412,7 +415,7 @@ namespace HelloPhoto
 
 			try
 			{	
-				var file = await _captureFolder.CreateFileAsync(_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
+				var file = await _captureFolder.CreateFileAsync("kiosk\\"+_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());

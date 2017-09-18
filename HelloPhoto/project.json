@@ -2,7 +2,8 @@
   "dependencies": {
     "AWSSDK.S3": "3.3.11",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
-    "Newtonsoft.Json": "10.0.3"
+    "Newtonsoft.Json": "10.0.3",
+    "System.Net.Http": "4.3.2"
   },
   "frameworks": {
     "uap10.0.10586": {}
