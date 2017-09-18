@@ -123,8 +123,9 @@
     <None Include="HelloPhoto_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\tech-con-banner-transparent.png" />
+    <Content Include="Assets\tech-con-banner.png" />
     <Content Include="Assets\tech-con-logo.png" />
-    <Content Include="Assets\tech-con-transparent.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

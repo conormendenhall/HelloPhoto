@@ -19,20 +19,9 @@
 
         <Image
             HorizontalAlignment="Center"
-            Width="1228"
-            Margin="0,50,0,500"
-            Grid.Row="0"
-            Grid.Column="1"
-            Source="/Assets/tech-con-logo.png" />
-
-        <!--<Button
-            Content="Touch screen to take photo"
-            HorizontalAlignment="Stretch"
-            FontSize="100"
-            Foreground="White"
-            FontWeight="Thin"
-            Background="#FFF70097">
-        </Button>-->
+            VerticalAlignment="Top"
+            Margin="50"
+            Source="/Assets/tech-con-banner-transparent.png" />
 
         <TextBlock
             HorizontalAlignment="Left"
@@ -43,7 +32,7 @@
             Width="1920"
             FontSize="100"
             TextAlignment="Center"
-            Foreground="#FFF70097" />
+            Foreground="#EC2B8C" />
 
         <HyperlinkButton
             Click="HyperlinkButton_Click"

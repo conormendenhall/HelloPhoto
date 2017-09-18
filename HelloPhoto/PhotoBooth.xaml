@@ -20,7 +20,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             FontSize="100"
-            Foreground="#FFF70097"
+            Foreground="#EC2B8C"
             Background="Transparent"
             FontWeight="Bold" />
 

@@ -16,6 +16,7 @@ using Windows.Storage;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 using Windows.System.Display;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -166,14 +167,6 @@ namespace HelloPhoto
 
 			// countdown from 5
 			BeginTimer();
-
-			// show white screen for flash
-
-		}
-
-		private async void CountdownText(object state)
-		{
-			this.Countdown.Text = "4";
 		}
 
 		private void Timer_Tick(object sender, object e)
@@ -191,6 +184,8 @@ namespace HelloPhoto
 
 		private void BeginTimer()
 		{
+			//PhotoButton.Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+
 			_timer = new DispatcherTimer();
 			_timer.Interval = new TimeSpan(0, 0, 1);
 			_timer.Tick += Timer_Tick;

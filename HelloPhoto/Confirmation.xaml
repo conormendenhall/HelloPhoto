@@ -24,7 +24,7 @@
             Width="658"
             FontSize="72"
             Text="@IOTPhotoKiosk"
-            Foreground="#FFF70097"/>
+            Foreground="#EC2B8C"/>
         
         <TextBlock
             HorizontalAlignment="Right"
@@ -34,7 +34,7 @@
             Height="176"
             Width="614"
             FontSize="72"
-            Foreground="#FFF70097"/>
+            Foreground="#EC2B8C"/>
 
         <Button
             Click="HomeButton_Click"
@@ -53,7 +53,7 @@
             VerticalAlignment="Top"
             Height="194"
             FontSize="72"
-            Background="#FFF70097"
+            Background="#EC2B8C"
             Foreground="White" />-->
         
     </Grid>
