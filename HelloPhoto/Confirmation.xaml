@@ -46,7 +46,7 @@
             Background="Black"
             Foreground="White" />
 
-        <Button
+        <!--<Button
             Click="RetakeButton_Click"
             Content="Retake"
             HorizontalAlignment="Right"
@@ -54,7 +54,7 @@
             Height="194"
             FontSize="72"
             Background="#FFF70097"
-            Foreground="White" />
+            Foreground="White" />-->
         
     </Grid>
 </Page>

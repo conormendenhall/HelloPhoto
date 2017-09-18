@@ -2,6 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -12,9 +13,18 @@ namespace HelloPhoto
 	/// </summary>
 	public sealed partial class Confirmation : Page
 	{
+		private string _photoPath;
+
 		public Confirmation()
 		{
 			InitializeComponent();
+		}
+
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+
+			_photoPath = e.Parameter.ToString();
 		}
 
 		#region Navigation
@@ -24,24 +34,15 @@ namespace HelloPhoto
 			Frame.Navigate(typeof(MainPage));
 		}
 
-		private void RetakeButton_Click(object sender, RoutedEventArgs e)
-		{
-			Frame.Navigate(typeof(PhotoBooth));
-		}
+		//private void RetakeButton_Click(object sender, RoutedEventArgs e)
+		//{
+		//	Frame.Navigate(typeof(PhotoBooth));
+		//}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			var img = sender as Image;
-
-			//img.Width = bitmapImage.DecodePixelWidth = 80; //natural px width of image source
-			// don't need to set Height, system maintains aspect ratio, and calculates the other
-			// dimension, so long as one dimension measurement is provided
-			//var bmp = new BitmapImage
-			//{
-			//	UriSource = new Uri(img.BaseUri.AbsoluteUri)
-			//};
-
-			//ConfirmationPhoto.Source = sender;
+			ConfirmationPhoto.Source = new BitmapImage(
+				new Uri(_photoPath, UriKind.Absolute));
 		}
 
 		#endregion Navigation

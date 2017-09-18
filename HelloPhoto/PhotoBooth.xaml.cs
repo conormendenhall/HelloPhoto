@@ -1,9 +1,7 @@
 ﻿using HelloPhoto.Models;
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
@@ -67,12 +65,17 @@ namespace HelloPhoto
 		private CameraRotationHelper _rotationHelper;
 
 		private string _contactId;
+		private DispatcherTimer _timer;
+		private int _basetime;
 
 		#region Constructor, lifecycle and navigation
 
 		public PhotoBooth()
 		{
 			this.InitializeComponent();
+			_timer = new DispatcherTimer();
+			_timer.Interval = new TimeSpan(0, 0, 1);
+			_timer.Tick += timer_Tick;
 		}
 
 		private void Application_Suspending(object sender, SuspendingEventArgs e)
@@ -161,8 +164,30 @@ namespace HelloPhoto
 
 		private async void PhotoButton_Click(object sender, RoutedEventArgs e)
 		{
+			// countdown from 5
+			//_timer = new Timer(CountdownText, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, Timeout.Infinite);
+			// show white screen for flash
+			_basetime = 5;
+			Countdown.Text = _basetime.ToString();
+			_timer.Start();
+
 			var photoPath = await TakePhotoAsync();
 			this.Frame.Navigate(typeof(Confirmation), photoPath);
+		}
+
+		private async void CountdownText(object state)
+		{
+			this.Countdown.Text = "4";
+		}
+
+		private void timer_Tick(object sender, object e)
+		{
+			_basetime = _basetime - 1;
+			Countdown.Text = _basetime.ToString();
+			if (_basetime == 0)
+			{
+				_timer.Stop();
+			}
 		}
 
 		//private async void VideoButton_Click(object sender, RoutedEventArgs e)
@@ -390,12 +415,15 @@ namespace HelloPhoto
 				await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
 				Debug.WriteLine("Photo saved!");
 
-				var _photoRepo = new PhotoRepository();
-                _photoRepo.Save(new Photo()
-                    {
-                        PhotoId = _contactId,
-                        FilePath = file.Path,
-                    });
+				Task.Run(() =>
+				{
+					var _photoRepo = new PhotoRepository();
+					_photoRepo.Save(new Photo()
+					{
+						PhotoId = _contactId,
+						FilePath = file.Path,
+					});
+				});
                
 				return file.Path;
 			}

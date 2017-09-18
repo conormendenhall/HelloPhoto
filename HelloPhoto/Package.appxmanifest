@@ -24,6 +24,7 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
     <uap:Capability Name="picturesLibrary" />
     <DeviceCapability Name="webcam" />
     <DeviceCapability Name="microphone" />
