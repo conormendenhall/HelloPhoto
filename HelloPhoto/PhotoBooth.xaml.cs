@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
+using Windows.Devices.SerialCommunication;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
@@ -174,6 +175,12 @@ namespace HelloPhoto
 		{
 			_basetime = _basetime - 1;
 			Countdown.Text = _basetime.ToString();
+
+			if(_basetime == 2)
+			{
+				Flash();
+			}
+
 			if (_basetime == 0)
 			{
 				_timer.Stop();
@@ -194,6 +201,38 @@ namespace HelloPhoto
 			_basetime = 5;
 			Countdown.Text = _basetime.ToString();
 			_timer.Start();
+		}
+
+		private async void Flash()
+		{
+			var filter = SerialDevice.GetDeviceSelector("COM3");
+
+			var devices = await DeviceInformation.FindAllAsync(filter);
+
+			if (devices.Any())
+			{
+				var deviceId = devices.First().Id;
+
+				var xuDevice = await SerialDevice.FromIdAsync(deviceId);
+
+				if (xuDevice != null)
+				{
+					xuDevice.BaudRate = 9600;
+					xuDevice.StopBits = SerialStopBitCount.One;
+					xuDevice.DataBits = 8;
+					xuDevice.Parity = SerialParity.None;
+					var DataWriterObject = new DataWriter(xuDevice.OutputStream);
+					DataWriterObject.WriteString("1");
+
+					Task<UInt32> storeAsyncTask;
+
+					// Cancellation Token will be used so we can stop the task operation explicitly
+					// The completion function should still be called so that we can properly handle a canceled task
+					storeAsyncTask = DataWriterObject.StoreAsync().AsTask();
+
+					UInt32 bytesWritten = await storeAsyncTask;
+				}
+			}
 		}
 
 		//private async void VideoButton_Click(object sender, RoutedEventArgs e)
