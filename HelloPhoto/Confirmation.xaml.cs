@@ -41,8 +41,8 @@ namespace HelloPhoto
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			ConfirmationPhoto.Source = new BitmapImage(
-				new Uri(_photoPath, UriKind.Absolute));
+			//ConfirmationPhoto.Source = new BitmapImage(
+			//	new Uri(_photoPath, UriKind.Absolute));
 		}
 
 		#endregion Navigation
