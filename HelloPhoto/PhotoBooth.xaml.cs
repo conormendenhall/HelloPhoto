@@ -107,7 +107,7 @@ namespace HelloPhoto
 			var contact = e.Parameter as Contact;
 
 			_isActivePage = true;
-			_contactId = contact?.Email ?? "contactId";
+			_contactId = contact?.Id ?? "contactId";
 
 			await SetUpBasedOnStateAsync();
 		}
@@ -381,17 +381,8 @@ namespace HelloPhoto
 			await _mediaCapture.CapturePhotoToStreamAsync(ImageEncodingProperties.CreateJpeg(), stream);
 
 			try
-			{
-				// Save the photo to the S3
-
-				//using (var client = new HttpClient())
-				//{
-				//	var inputData = new StreamContent(stream.AsStream());
-
-				//	var response = await client.PostAsync("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/api/Photos", inputData);
-				//}
-
-				var file = await _captureFolder.CreateFileAsync(_contactId + ".jpg", CreationCollisionOption.GenerateUniqueName);
+			{	
+				var file = await _captureFolder.CreateFileAsync(_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());
@@ -400,13 +391,12 @@ namespace HelloPhoto
 				Debug.WriteLine("Photo saved!");
 
 				var _photoRepo = new PhotoRepository();
-
-				_photoRepo.Save(new Photo()
-				{
-					PhotoId = Guid.NewGuid(),
-					FilePath = file.Path,
-				});
-
+                _photoRepo.Save(new Photo()
+                    {
+                        PhotoId = _contactId,
+                        FilePath = file.Path,
+                    });
+               
 				return file.Path;
 			}
 			catch (Exception ex)
