@@ -15,7 +15,8 @@
                  InputScope="EmailSmtpAddress"
                  VerticalAlignment="Top"
                  Height="126"
-                 FontSize="72"/>
+                 FontSize="72"
+                 Margin="225"/>
         
         <Button
             Click="HomeButton_Click"

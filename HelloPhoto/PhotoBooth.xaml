@@ -46,7 +46,6 @@
 
         <TextBlock
             Name="Countdown"
-            Text="5"
             FontSize="400"
             Foreground="#FFFF00B9"
             HorizontalAlignment="Center"

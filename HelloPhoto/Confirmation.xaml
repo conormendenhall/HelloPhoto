@@ -19,9 +19,9 @@
         <TextBlock
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            TextWrapping="Wrap"
+            TextAlignment="Center"
             Height="176"
-            Width="1042"
+            Width="658"
             FontSize="72"
             Text="@IOTPhotoKiosk"
             Foreground="#FFF70097"/>
@@ -29,10 +29,10 @@
         <TextBlock
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            TextWrapping="Wrap"
-            Text="#QLTechCon"
+            TextAlignment="Center"
+            Text="#QLTechCon17"
             Height="176"
-            Width="410"
+            Width="614"
             FontSize="72"
             Foreground="#FFF70097"/>
 

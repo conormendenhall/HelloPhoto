@@ -73,9 +73,6 @@ namespace HelloPhoto
 		public PhotoBooth()
 		{
 			this.InitializeComponent();
-			_timer = new DispatcherTimer();
-			_timer.Interval = new TimeSpan(0, 0, 1);
-			_timer.Tick += timer_Tick;
 		}
 
 		private void Application_Suspending(object sender, SuspendingEventArgs e)
@@ -164,15 +161,14 @@ namespace HelloPhoto
 
 		private async void PhotoButton_Click(object sender, RoutedEventArgs e)
 		{
-			// countdown from 5
-			//_timer = new Timer(CountdownText, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, Timeout.Infinite);
-			// show white screen for flash
-			_basetime = 5;
-			Countdown.Text = _basetime.ToString();
-			_timer.Start();
+			// disable button
+			PhotoButton.IsEnabled = false;
 
-			var photoPath = await TakePhotoAsync();
-			this.Frame.Navigate(typeof(Confirmation), photoPath);
+			// countdown from 5
+			BeginTimer();
+
+			// show white screen for flash
+
 		}
 
 		private async void CountdownText(object state)
@@ -180,14 +176,28 @@ namespace HelloPhoto
 			this.Countdown.Text = "4";
 		}
 
-		private void timer_Tick(object sender, object e)
+		private void Timer_Tick(object sender, object e)
 		{
 			_basetime = _basetime - 1;
 			Countdown.Text = _basetime.ToString();
 			if (_basetime == 0)
 			{
 				_timer.Stop();
+
+				var photoPath = TakePhotoAsync();
+				this.Frame.Navigate(typeof(Confirmation), photoPath);
 			}
+		}
+
+		private void BeginTimer()
+		{
+			_timer = new DispatcherTimer();
+			_timer.Interval = new TimeSpan(0, 0, 1);
+			_timer.Tick += Timer_Tick;
+
+			_basetime = 5;
+			Countdown.Text = _basetime.ToString();
+			_timer.Start();
 		}
 
 		//private async void VideoButton_Click(object sender, RoutedEventArgs e)
