@@ -168,8 +168,8 @@ namespace HelloPhoto
 			//_timer = new Timer(CountdownText, null, (int)TimeSpan.FromSeconds(1).TotalMilliseconds, Timeout.Infinite);
 			// show white screen for flash
 			_basetime = 5;
-			Countdown.Text = _basetime.ToString();
-			_timer.Start();
+			//Countdown.Text = _basetime.ToString();
+			//_timer.Start();
 
 			var photoPath = await TakePhotoAsync();
 			this.Frame.Navigate(typeof(Confirmation), photoPath);
@@ -407,7 +407,7 @@ namespace HelloPhoto
 
 			try
 			{	
-				var file = await _captureFolder.CreateFileAsync(_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
+				var file = await _captureFolder.CreateFileAsync("kiosk\\"+_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());

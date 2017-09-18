@@ -4,6 +4,7 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using System;
 using System.Diagnostics;
+using Amazon;
 using Amazon.Runtime;
 using HelloPhoto.Repositories;
 
@@ -12,9 +13,15 @@ namespace HelloPhoto
 	class PhotoRepository
 	{
 		public async void Save(Photo photo)
-		{            
+		{
+		    AmazonS3Config S3Config = new AmazonS3Config()
+		    {
+                UseHttp = true,
+                RegionEndpoint = RegionEndpoint.USEast2
+		    };
+
             IAmazonS3 client;
-            using (client = new AmazonS3Client("ACCESSKEY", "SECRETACCESSKEY", Amazon.RegionEndpoint.USEast2))
+            using (client = new AmazonS3Client("sss", "ssssS", S3Config))
             {
                 Debug.WriteLine("Uploading an object");
                 try
