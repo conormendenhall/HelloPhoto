@@ -37,7 +37,7 @@
             FontSize="72"
             Foreground="White"
             FontWeight="Thin"
-            Background="#FFF70097"
+            Background="#EC2B8C"
             Height="172" />
 
     </Grid>
