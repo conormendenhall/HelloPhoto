@@ -5,16 +5,16 @@
     xmlns:local="using:HelloPhoto"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Loaded="Page_Loaded">
+    mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         
         <Image
             Name="ConfirmationPhoto"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Top"
-            Height="758"/>
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Height="500"
+            Width="500"/>
         
         <TextBlock
             HorizontalAlignment="Left"
@@ -45,16 +45,6 @@
             FontSize="72"
             Background="Black"
             Foreground="White" />
-
-        <!--<Button
-            Click="RetakeButton_Click"
-            Content="Retake"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Height="194"
-            FontSize="72"
-            Background="#EC2B8C"
-            Foreground="White" />-->
         
     </Grid>
 </Page>
