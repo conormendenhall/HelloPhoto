@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -13,36 +16,63 @@ namespace HelloPhoto
 	/// </summary>
 	public sealed partial class Confirmation : Page
 	{
-		private string _photoPath;
+		private string _imagePath { get; set; }
+        private DispatcherTimer _timer;
+        private int _basetime;
 
-		public Confirmation()
+        public Confirmation()
 		{
 			InitializeComponent();
+            BeginTimer();
+            ConfirmationPhoto.Loaded += ConfirmationPhoto_Loaded;
 		}
+        
+        private void BeginTimer()
+        {
+            _timer = new DispatcherTimer();
+            _timer.Interval = new TimeSpan(0, 0, 1);
+            _timer.Tick += Timer_Tick;
+
+            _basetime = 9;
+            _timer.Start();
+        }
+
+        private async void ConfirmationPhoto_Loaded(object sender, RoutedEventArgs e)
+		{
+            StorageFile file = await StorageFile.GetFileFromPathAsync(_imagePath);
+
+            using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
+            {
+                BitmapImage image = new BitmapImage();
+                image.SetSource(fileStream);
+                ConfirmationPhoto.Source = image;
+            }
+        }
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
 
-			_photoPath = e.Parameter.ToString();
+			_imagePath = e.Parameter.ToString();
 		}
 
-		#region Navigation
+        private void Timer_Tick(object sender, object e)
+        {
+            _basetime = _basetime - 1;
+            countdown.Text = $"Thanks! Your photo will be tweeted shortly!\r\nGoing home in {_basetime.ToString()}s";
+            
+            if (_basetime == 0)
+            {
+                _timer.Stop();
+                HomeButton_Click(null, null);
+            }
+        }
 
-		private void HomeButton_Click(object sender, RoutedEventArgs e)
+        #region Navigation
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(MainPage));
-		}
-
-		//private void RetakeButton_Click(object sender, RoutedEventArgs e)
-		//{
-		//	Frame.Navigate(typeof(PhotoBooth));
-		//}
-
-		private void Page_Loaded(object sender, RoutedEventArgs e)
-		{
-			//ConfirmationPhoto.Source = new BitmapImage(
-			//	new Uri(_photoPath, UriKind.Absolute));
 		}
 
 		#endregion Navigation
