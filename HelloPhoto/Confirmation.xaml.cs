@@ -17,27 +17,37 @@ namespace HelloPhoto
 	public sealed partial class Confirmation : Page
 	{
 		private string _imagePath { get; set; }
+        private DispatcherTimer _timer;
+        private int _basetime;
 
-		public Confirmation()
+        public Confirmation()
 		{
 			InitializeComponent();
-
-			ConfirmationPhoto.Loaded += ConfirmationPhoto_Loaded;
+            BeginTimer();
+            ConfirmationPhoto.Loaded += ConfirmationPhoto_Loaded;
 		}
+        
+        private void BeginTimer()
+        {
+            _timer = new DispatcherTimer();
+            _timer.Interval = new TimeSpan(0, 0, 1);
+            _timer.Tick += Timer_Tick;
 
-		private async void ConfirmationPhoto_Loaded(object sender, RoutedEventArgs e)
+            _basetime = 9;
+            _timer.Start();
+        }
+
+        private async void ConfirmationPhoto_Loaded(object sender, RoutedEventArgs e)
 		{
-			//StorageFile file = await StorageFile.GetFileFromPathAsync(_imagePath);
+            StorageFile file = await StorageFile.GetFileFromPathAsync(_imagePath);
 
-			//using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
-			//{
-			//	BitmapImage image = new BitmapImage();
-			//	image.SetSource(fileStream);
-			//	ConfirmationPhoto.Source = image;
-			//}
-
-			ConfirmationPhoto.Source = new BitmapImage(new Uri(_imagePath));
-		}
+            using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
+            {
+                BitmapImage image = new BitmapImage();
+                image.SetSource(fileStream);
+                ConfirmationPhoto.Source = image;
+            }
+        }
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
@@ -46,9 +56,21 @@ namespace HelloPhoto
 			_imagePath = e.Parameter.ToString();
 		}
 
-		#region Navigation
+        private void Timer_Tick(object sender, object e)
+        {
+            _basetime = _basetime - 1;
+            countdown.Text = $"Thanks! Your photo will be tweeted shortly!\r\nGoing home in {_basetime.ToString()}s";
+            
+            if (_basetime == 0)
+            {
+                _timer.Stop();
+                HomeButton_Click(null, null);
+            }
+        }
 
-		private void HomeButton_Click(object sender, RoutedEventArgs e)
+        #region Navigation
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(MainPage));
 		}

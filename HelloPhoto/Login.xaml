@@ -13,17 +13,19 @@
                  PlaceholderText="Touch here to enter email"
                  InputScope="EmailSmtpAddress"
                  VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
                  FontSize="72"
                  Margin="250"/>
 
         <Button
             Click="SubmitButton_Click"
-            Content="Submit"
+            Content="Submit or Skip"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             FontSize="72"
             Foreground="White"
             FontWeight="Thin"
+            Margin="0,0,40,0"
             Background="#EC2B8C" />
 
         <Button

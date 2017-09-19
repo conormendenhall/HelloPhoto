@@ -469,12 +469,14 @@ namespace HelloPhoto
 				var file = await _captureFolder.CreateFileAsync("kiosk\\"+_contactId + ".png", CreationCollisionOption.GenerateUniqueName);
 				Debug.WriteLine("Photo taken! Saving to " + file.Path);
 
-				this.Frame.Navigate(typeof(Confirmation), file.Path);
 
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());
 
 				await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
-				Debug.WriteLine("Photo saved!");
+                
+                this.Frame.Navigate(typeof(Confirmation), file.Path);
+
+                Debug.WriteLine("Photo saved!");
 
 				Task.Run(() =>
 				{
