@@ -18,8 +18,8 @@
         <Image
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Margin="50"
-            Source="/Assets/tech-con-banner-transparent.png" />
+            Margin="0"
+            Source="/Assets/balloons.png" />
 
         <TextBlock
             HorizontalAlignment="Left"
@@ -30,7 +30,8 @@
             Width="1920"
             FontSize="100"
             TextAlignment="Center"
-            Foreground="#EC2B8C" />
+            Foreground="#EC2B8C" 
+            Margin="0,0,0,-40"/>
 
         <HyperlinkButton
             Click="HyperlinkButton_Click"

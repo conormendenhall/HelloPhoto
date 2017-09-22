@@ -21,7 +21,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             TextAlignment="Center"
-            FontSize="60"
+            FontSize="50"
             Text="Thanks! Your photo will be tweeted shortly!"
             Foreground="#EC2B8C"/>
         
@@ -33,17 +33,19 @@
             Width="658"
             FontSize="72"
             Text="@IOTPhotoKiosk"
-            Foreground="#EC2B8C"/>
+            Foreground="#EC2B8C"
+            Margin="0,0,0,-40"/>
         
         <TextBlock
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             TextAlignment="Center"
-            Text="#QLTechCon17"
+            Text="#Occasions"
             Height="176"
             Width="614"
             FontSize="72"
-            Foreground="#EC2B8C"/>
+            Foreground="#EC2B8C"
+            Margin="0,0,0,-40"/>
 
         <Button
             Click="HomeButton_Click"
