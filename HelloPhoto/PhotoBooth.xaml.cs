@@ -204,7 +204,7 @@ namespace HelloPhoto
 
 		private async void Flash()
 		{
-			var filter = SerialDevice.GetDeviceSelector("COM3");
+			var filter = SerialDevice.GetDeviceSelector("COM5");
 
 			var devices = await DeviceInformation.FindAllAsync(filter);
 
@@ -332,7 +332,7 @@ namespace HelloPhoto
 				    //var nice = string.Join("\r\n",res.ToList());
                     
 				    // set used resolution
-				    await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
+				    //await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
 
                     // Figure out where the camera is located
                     if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)

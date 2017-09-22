@@ -72,6 +72,8 @@ namespace HelloPhoto
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
+            _timer.Stop();
+
 			Frame.Navigate(typeof(MainPage));
 		}
 
