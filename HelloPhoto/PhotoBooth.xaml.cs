@@ -319,20 +319,20 @@ namespace HelloPhoto
 				// If initialization succeeded, start the preview
 				if (_isInitialized)
 				{
+
+                    //var res = resolutions.Select(x => ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Height + "x" +
+                    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Width + " - " +
+                    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Bitrate + " - " +
+                    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties)x).FrameRate.Numerator + " - " +
+                    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties)x).FrameRate.Denominator);
+
+				    //var nice = string.Join("\r\n",res.ToList());
+
 				    // get available resolutions
 				    var resolutions = _mediaCapture.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.Photo).ToList();
 
-
-				    //var res = resolutions.Select(x => ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Height + "x" +
-				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Width + " - " +
-				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties) x).Bitrate + " - " +
-				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties)x).FrameRate.Numerator + " - " +
-				    //                                  ((Windows.Media.MediaProperties.VideoEncodingProperties)x).FrameRate.Denominator);
-
-				    //var nice = string.Join("\r\n",res.ToList());
-                    
-				    // set used resolution
-				    //await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
+                    // set used resolution
+                    await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
 
                     // Figure out where the camera is located
                     if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)

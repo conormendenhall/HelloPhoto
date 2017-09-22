@@ -243,8 +243,14 @@ namespace HelloPhoto
 				// If initialization succeeded, start the preview
 				if (_isInitialized)
 				{
-					// Figure out where the camera is located
-					if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
+				    // get available resolutions
+				    var resolutions = _mediaCapture.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.Photo).ToList();
+
+				    // set used resolution
+				    await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
+
+                    // Figure out where the camera is located
+                    if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
 					{
 						// No information on the location of the camera, assume it's an external camera, not integrated on the device
 						_externalCamera = true;
