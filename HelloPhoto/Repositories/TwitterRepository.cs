@@ -19,12 +19,10 @@ namespace HelloPhoto.Repositories
             aHBPF.IgnorableServerCertificateErrors.Add(ChainValidationResult.Expired);
             aHBPF.IgnorableServerCertificateErrors.Add(ChainValidationResult.Untrusted);
             aHBPF.IgnorableServerCertificateErrors.Add(ChainValidationResult.IncompleteChain);
-            //aHBPF.IgnorableServerCertificateErrors.Add(ChainValidationResult.OtherErrors);
-            //aHBPF.IgnorableServerCertificateErrors.Add(ChainValidationResult.InvalidSignature);
-            
+
             var client = new HttpClient(aHBPF);
 
-            var stringContent = new HttpStringContent("\"" + id + "\"", Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
+            var stringContent = new HttpStringContent("{ \"image\":\"techcon-1920overlay.png\",\"hashtag':\"test\"}", Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
                      
             var result =
                 await client.PostAsync(new Uri("https://8kasriow2b.execute-api.us-east-2.amazonaws.com/Prod/twitter"), stringContent);

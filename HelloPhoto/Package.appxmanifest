@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="b765f9be-ec9d-4f88-85c8-037a6cb539f7" Publisher="CN=cmendenhall" Version="1.0.0.0" />
+  <Identity Name="b765f9be-ec9d-4f88-85c8-037a6cb539f7" Publisher="CN=cmendenhall" Version="1.0.7.0" />
   <mp:PhoneIdentity PhoneProductId="b765f9be-ec9d-4f88-85c8-037a6cb539f7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>HelloPhoto</DisplayName>
@@ -20,6 +20,10 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.lockScreenCall" />
+        <uap:Extension Category="windows.aboveLockScreen" />
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

@@ -166,6 +166,7 @@ namespace HelloPhoto
 
 			// hide "Touch screen to take photo" message
 			PhotoMessage.Visibility = Visibility.Collapsed;
+		    homeBtn.Visibility = Visibility.Collapsed;
 
 			// countdown from 5
 			BeginTimer();
@@ -332,8 +333,9 @@ namespace HelloPhoto
 				    var resolutions = _mediaCapture.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.Photo).ToList();
 
                     // set used resolution
+#if !DEBUG
                     await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
-
+#endif
                     // Figure out where the camera is located
                     if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
 					{
@@ -586,10 +588,10 @@ namespace HelloPhoto
 			}
 		}
 
-		#endregion MediaCapture methods
+#endregion MediaCapture methods
 
 
-		#region Helper functions
+#region Helper functions
 
 		/// <summary>
 		/// Initialize or clean up the camera and our UI,
@@ -761,15 +763,15 @@ namespace HelloPhoto
 			}
 		}
 
-		#endregion Helper functions
+#endregion Helper functions
 
-		#region Navigation
+#region Navigation
 
 		private void HomeButton_Click(object sender, RoutedEventArgs e)
 		{
 			this.Frame.Navigate(typeof(MainPage));
 		}
 
-		#endregion Navigation
+#endregion Navigation
 	}
 }

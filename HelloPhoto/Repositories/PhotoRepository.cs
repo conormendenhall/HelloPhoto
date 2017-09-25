@@ -34,7 +34,10 @@ namespace HelloPhoto
                         ContentType = "image/png"
                     };
                     request.Metadata.Add("x-amz-meta-title", "someTitle");
+
+#if !DEBUG
                     PutObjectResponse response1 = await client.PutObjectAsync(request);
+#endif
 
                     var test = new TwitterRepository();
                     test.TweetItAsync(photo.PhotoId + ".png");

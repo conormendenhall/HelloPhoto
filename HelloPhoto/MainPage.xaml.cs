@@ -246,9 +246,10 @@ namespace HelloPhoto
 				    // get available resolutions
 				    var resolutions = _mediaCapture.VideoDeviceController.GetAvailableMediaStreamProperties(MediaStreamType.Photo).ToList();
 
-				    // set used resolution
-				    await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
-
+                    // set used resolution
+#if !DEBUG
+                    await _mediaCapture.VideoDeviceController.SetMediaStreamPropertiesAsync(MediaStreamType.Photo, resolutions[33]);
+#endif
                     // Figure out where the camera is located
                     if (cameraDevice.EnclosureLocation == null || cameraDevice.EnclosureLocation.Panel == Windows.Devices.Enumeration.Panel.Unknown)
 					{
