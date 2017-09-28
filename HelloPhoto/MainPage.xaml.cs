@@ -26,12 +26,17 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using HelloPhoto.Models;
+using HelloPhoto.Repositories;
 
 namespace HelloPhoto
 {
     public sealed partial class MainPage : Page
-	{
+    {
+        public static Event EventData;
+
 		// Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
 		// Reference: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh868174.aspx
 		private static readonly Guid RotationKey = new Guid("C380465D-2271-428C-9B83-ECEA3B4A85C1");
@@ -68,6 +73,11 @@ namespace HelloPhoto
 		public MainPage()
         {
             this.InitializeComponent();
+
+
+            throw new Exception("OMG hax");
+
+            LoadEvent();
 
 			// Do not cache the state of the UI when suspending/navigating
 			NavigationCacheMode = NavigationCacheMode.Disabled;
@@ -153,32 +163,40 @@ namespace HelloPhoto
 			});
 		}
 
-		//private async void PhotoButton_Click(object sender, RoutedEventArgs e)
-		//{
-		//	await TakePhotoAsync();
-		//}
+        private async void LoadEvent()
+        {
+            if (EventData == null)
+            {
+                try
+                {
+                    EventData = await new EventRepository().Get();
 
-		//private async void VideoButton_Click(object sender, RoutedEventArgs e)
-		//{
-		//	if (!_isRecording)
-		//	{
-		//		await StartRecordingAsync();
-		//	}
-		//	else
-		//	{
-		//		await StopRecordingAsync();
-		//	}
+                    //overlayImg.Source = await FromBase64(EventData.LandingOverlayBytes);
+                    //overlayImg.Visibility = Visibility.Visible;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
 
-		//	// After starting or stopping video recording, update the UI to reflect the MediaCapture state
-		//	UpdateCaptureControls();
-		//}
+        private async Task<ImageSource> FromBase64(byte[] bytes)
+        {
 
-		//private async void HardwareButtons_CameraPressed(object sender, CameraEventArgs e)
-		//{
-		//	await TakePhotoAsync();
-		//}
+            var image = bytes.AsBuffer().AsStream().AsRandomAccessStream();
 
-		private async void MediaCapture_RecordLimitationExceeded(MediaCapture sender)
+            // decode image
+            var decoder = await BitmapDecoder.CreateAsync(image);
+            image.Seek(0);
+
+            // create bitmap
+            var output = new WriteableBitmap((int)decoder.PixelHeight, (int)decoder.PixelWidth);
+            await output.SetSourceAsync(image);
+            return output;
+        }
+
+        private async void MediaCapture_RecordLimitationExceeded(MediaCapture sender)
 		{
 			// This is a notification that recording has to stop, and the app is expected to finalize the recording
 

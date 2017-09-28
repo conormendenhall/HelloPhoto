@@ -205,7 +205,7 @@ namespace HelloPhoto
 
 		private async void Flash()
 		{
-			var filter = SerialDevice.GetDeviceSelector("COM5");
+			var filter = SerialDevice.GetDeviceSelector("COM3");
 
 			var devices = await DeviceInformation.FindAllAsync(filter);
 

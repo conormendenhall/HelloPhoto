@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Windows.Security.Cryptography.Certificates;
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
 using HttpClient = Windows.Web.Http.HttpClient;
+using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
 
 namespace HelloPhoto.Repositories
 {
@@ -22,8 +24,11 @@ namespace HelloPhoto.Repositories
 
             var client = new HttpClient(aHBPF);
 
-            var stringContent = new HttpStringContent("{ \"image\":\"techcon-1920overlay.png\",\"hashtag':\"test\"}", Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
-                     
+            var x = new {
+                image = id,
+                hashtag = (MainPage.EventData?.TwitterHashTag ?? "FunWithIoT")};
+            
+            var stringContent = new HttpStringContent("\"{\'image\':\'"+id+"\',\'hashtag\':\'"+ (MainPage.EventData?.TwitterHashTag ?? "FunWithIoT") + "\'}\"", UnicodeEncoding.Utf8, "application/json");
             var result =
                 await client.PostAsync(new Uri("https://8kasriow2b.execute-api.us-east-2.amazonaws.com/Prod/twitter"), stringContent);
             

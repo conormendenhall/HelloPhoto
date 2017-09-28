@@ -12,7 +12,7 @@ namespace HelloPhoto.Repositories
 		public async Task<Contact> Save(Contact contact)
 		{
 			var client = new HttpClient();
-
+            
 			var stringContent = new StringContent(JsonConvert.SerializeObject(contact), Encoding.UTF8, "application/json");
 
 			var result =

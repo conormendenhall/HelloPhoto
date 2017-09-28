@@ -17,7 +17,7 @@
             Name="PreviewControl"
             Stretch="Uniform" />
 
-        <Image
+        <Image x:Name="overlayImg"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Margin="0"

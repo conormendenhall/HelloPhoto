@@ -42,7 +42,8 @@ namespace HelloPhoto
 			var contact = new Contact()
 			{
 				Id = Guid.NewGuid().ToString(),
-				Email = string.IsNullOrWhiteSpace(EmailInput?.Text) ? "photobooth_image" : EmailInput.Text
+				Email = string.IsNullOrWhiteSpace(EmailInput?.Text) ? "photobooth_image" : EmailInput.Text,
+                EventId = MainPage.EventData?.EventId ?? "NoEventIdSadFace"
 			};
 
 			return await _repo.Save(contact);

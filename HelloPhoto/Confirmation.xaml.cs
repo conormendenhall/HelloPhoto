@@ -25,6 +25,8 @@ namespace HelloPhoto
 			InitializeComponent();
             BeginTimer();
             ConfirmationPhoto.Loaded += ConfirmationPhoto_Loaded;
+
+		    hashtags.Text = MainPage.EventData?.TwitterHashTag ?? "#FunWithIOT";
 		}
         
         private void BeginTimer()

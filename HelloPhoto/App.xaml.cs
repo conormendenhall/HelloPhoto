@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,17 @@ namespace HelloPhoto
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            //tell the app we got this
+            e.Handled = true;
+            //var ex = e.Exception;
+           // File.WriteAllText(Path.Combine(KnownFolders.CameraRoll.Path, "kiosk", "Exception.txt"), $"{ex.Message} \r\n {ex.StackTrace}");
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(ErrorHandler));
         }
 
         /// <summary>
