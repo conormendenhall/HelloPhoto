@@ -23,6 +23,8 @@ namespace HelloPhoto
     /// </summary>
     sealed partial class App : Application
     {
+
+        private Exception ex;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,13 +35,20 @@ namespace HelloPhoto
             this.Suspending += OnSuspending;
             this.UnhandledException += App_UnhandledException;
         }
-
         private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             //tell the app we got this
             e.Handled = true;
-            //var ex = e.Exception;
-           // File.WriteAllText(Path.Combine(KnownFolders.CameraRoll.Path, "kiosk", "Exception.txt"), $"{ex.Message} \r\n {ex.StackTrace}");
+            try
+            {
+                ex = e.Exception;
+                File.WriteAllText(Path.Combine(KnownFolders.CameraRoll.Path, "kiosk", "Exception.txt"), $"{ex.Message} \r\n {ex.StackTrace}");
+            }
+            catch (Exception exception)
+            {
+                // ignore
+            }
+
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(ErrorHandler));
         }

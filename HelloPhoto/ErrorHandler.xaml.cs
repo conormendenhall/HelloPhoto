@@ -27,13 +27,7 @@ namespace HelloPhoto
         {
             this.InitializeComponent();
         }
-
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-          //  var ex = e.Parameter as Exception;
-           // File.WriteAllText(Path.Combine(KnownFolders.PicturesLibrary.Path, "kiosk", "Exception.txt"), $"{ex.Message} \r\n {ex.StackTrace}");
-        }
-
+        
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));

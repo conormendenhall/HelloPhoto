@@ -17,7 +17,8 @@ namespace HelloPhoto
 		public Login()
 		{
 			InitializeComponent();
-		}
+		    submitButton.Visibility = Visibility.Visible;
+        }
 
 		#region Navigation
 
@@ -30,6 +31,7 @@ namespace HelloPhoto
 
 		private async void SubmitButton_Click(object sender, RoutedEventArgs e)
 		{
+		    submitButton.Visibility = Visibility.Collapsed;
 			var contact = await SaveContactAsync();
 
 			Frame.Navigate(typeof(PhotoBooth), contact);

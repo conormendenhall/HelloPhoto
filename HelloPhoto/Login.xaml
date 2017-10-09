@@ -19,7 +19,7 @@
                  HorizontalAlignment="Center"
                  FontSize="72" />
 
-        <Button
+        <Button x:Name="submitButton"
             Click="SubmitButton_Click"
             Content="Submit or Skip"
             HorizontalAlignment="Center"

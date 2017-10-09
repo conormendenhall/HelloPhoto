@@ -162,7 +162,7 @@ namespace HelloPhoto
 		private async void PhotoButton_Click(object sender, RoutedEventArgs e)
 		{
 			// disable button
-			PhotoButton.IsEnabled = false;
+		    PhotoButton.Visibility = Visibility.Collapsed;
 
 			// hide "Touch screen to take photo" message
 			PhotoMessage.Visibility = Visibility.Collapsed;
@@ -680,7 +680,7 @@ namespace HelloPhoto
 		private void UpdateCaptureControls()
 		{
 			// The buttons should only be enabled if the preview started sucessfully
-			PhotoButton.IsEnabled = _isPreviewing;
+			//PhotoButton.IsEnabled = _isPreviewing;
 			//VideoButton.IsEnabled = _isPreviewing;
 
 			// Update recording button to show "Stop" icon instead of red "Record" icon
@@ -690,7 +690,7 @@ namespace HelloPhoto
 			// If the camera doesn't support simultaneosly taking pictures and recording video, disable the photo button on record
 			if (_isInitialized && !_mediaCapture.MediaCaptureSettings.ConcurrentRecordAndPhotoSupported)
 			{
-				PhotoButton.IsEnabled = !_isRecording;
+				//PhotoButton.IsEnabled = !_isRecording;
 
 				// Make the button invisible if it's disabled, so it's obvious it cannot be interacted with
 				PhotoButton.Opacity = PhotoButton.IsEnabled ? 1 : 0;

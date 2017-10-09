@@ -25,13 +25,12 @@ namespace HelloPhoto
             var client = new HttpClient();
             {
                 var friendlyFilename = Path.GetFileName(photo.FilePath);
-                client.Timeout = TimeSpan.FromSeconds(5);
+                client.Timeout = TimeSpan.FromSeconds(15);
 
                 client.BaseAddress = new Uri("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/");
 
                 var fileData = new ByteArrayContent(File.ReadAllBytes(photo.FilePath));
-
-
+                
                 var multiContent = new MultipartFormDataContent();
                 multiContent.Add(fileData, "file", friendlyFilename);
 

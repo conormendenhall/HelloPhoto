@@ -73,10 +73,7 @@ namespace HelloPhoto
 		public MainPage()
         {
             this.InitializeComponent();
-
-
-            throw new Exception("OMG hax");
-
+            
             LoadEvent();
 
 			// Do not cache the state of the UI when suspending/navigating
@@ -687,7 +684,7 @@ namespace HelloPhoto
 
 		private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
 		{
-			this.Frame.Navigate(typeof(Login));
+            this.Frame.Navigate(typeof(Login));
 		}
 
 		private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
