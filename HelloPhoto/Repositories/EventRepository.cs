@@ -12,7 +12,7 @@ namespace HelloPhoto.Repositories
 {
 	class EventRepository
 	{
-		public async Task<Event> Get()
+		public async Task<List<Event>> Get()
 		{
 		    try
 		    {
@@ -24,7 +24,7 @@ namespace HelloPhoto.Repositories
 		        {
 		            var datas = await result.Content.ReadAsStringAsync();
 
-                    return JsonConvert.DeserializeObject<List<Event>>(datas).FirstOrDefault();
+                    return JsonConvert.DeserializeObject<List<Event>>(datas);
 		        }
             }
 		    catch (Exception ex)

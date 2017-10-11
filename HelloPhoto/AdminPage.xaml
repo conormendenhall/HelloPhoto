@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="HelloPhoto.AdminPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloPhoto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="1920"
+    Height="1080">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Slider x:Name="ledBrightness" HorizontalAlignment="Left" Margin="66,354,0,0" VerticalAlignment="Top" Width="452" Height="38" Value="100" ValueChanged="ledBrightness_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Center" FontSize="70"  Margin="0,50,0,0" TextWrapping="Wrap" Text="Administration" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,297,0,0" TextWrapping="Wrap" Text="LED Brightness" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,548,0,0" TextWrapping="Wrap" Text="Event" VerticalAlignment="Top"/>
+        <ComboBox x:Name="eventDropdown" HorizontalAlignment="Left" FontSize="30" Margin="66,606,0,0" VerticalAlignment="Top" Width="452" SelectionChanged="eventDropdown_SelectionChanged"/>
+        <Button x:Name="homeBtn" Content="Home" FontSize="50" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Click="homeBtn_Click"/>
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="400" Margin="957,200,0,0" VerticalAlignment="Top" Width="656" >
+            <Image x:Name="OverlayImg"/>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="Black"  HorizontalAlignment="Left" Height="400" Margin="957,675,0,0" VerticalAlignment="Top" Width="656">
+            <Image x:Name="EventImg"/>
+        </Border>
+        <TextBlock x:Name="eventHashtag" FontSize="40" HorizontalAlignment="Left" Margin="66,720,0,0" TextWrapping="Wrap" Text="#EventHashTag" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="693,200,0,0" TextWrapping="Wrap" Text="Photo Overlay:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="725,675,0,0" TextWrapping="Wrap" Text="Kiosk Splash:" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

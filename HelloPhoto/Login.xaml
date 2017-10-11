@@ -40,7 +40,7 @@
             FontSize="72"
             Background="Black"
             Foreground="White" />
-        
+
         <TextBlock 
             HorizontalAlignment="Center"
             Margin="0,400,0,0"
@@ -48,13 +48,19 @@
             Text="Email address is optional. Photo will be tweeted from @IoTPhotoKiosk"
             FontSize="50"
             VerticalAlignment="Top"/>
-        
+
         <Image HorizontalAlignment="Center"
                VerticalAlignment="Center"
                Source="Assets/twitterlogo.png"
                Margin="0,-450,0,0"
                Width="150" 
                />
+
+        <Button x:Name="beethovensBtn" Margin="30,30,30,50" Content="π" FontSize="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="White" BorderThickness="0" Click="beethovensBtn_Click"/>
+        <Grid x:Name="pwGrid" HorizontalAlignment="Left" Height="167" Margin="1299,135,0,0" VerticalAlignment="Top" Width="461" Visibility="Collapsed">
+            <PasswordBox x:Name="pwText" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" PlaceholderText="Password" VerticalAlignment="Top" Height="59" Width="220" KeyUp="pwText_KeyUp"/>
+            <Button x:Name="pwButton" Content="Submit" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="220" Click="pwButton_Click"/>
+        </Grid>
 
     </Grid>
 </Page>

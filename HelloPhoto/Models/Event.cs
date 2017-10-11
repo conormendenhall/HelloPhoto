@@ -16,6 +16,7 @@ namespace HelloPhoto.Models
         private byte[] _landingOverlay;
 
         public string EventId { get; set; }
+        public string EventName { get; set; }
         public bool IsActive { get; set; }
         public string TwitterHashTag { get; set; }
         public string StartDate { get; set; }
@@ -63,5 +64,9 @@ namespace HelloPhoto.Models
             }
         }
 
+        public override string ToString()
+        {
+            return EventName;
+        }
     }
 }

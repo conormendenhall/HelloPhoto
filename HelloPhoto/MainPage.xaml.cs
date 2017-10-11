@@ -166,7 +166,7 @@ namespace HelloPhoto
             {
                 try
                 {
-                    EventData = await new EventRepository().Get();
+                    EventData = new EventRepository().Get().Result.FirstOrDefault();
 
                     //overlayImg.Source = await FromBase64(EventData.LandingOverlayBytes);
                     //overlayImg.Visibility = Visibility.Visible;

@@ -2,6 +2,7 @@
 using HelloPhoto.Repositories;
 using System;
 using System.Threading.Tasks;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -50,5 +51,32 @@ namespace HelloPhoto
 
 			return await _repo.Save(contact);
 		}
-	}
+
+        private void beethovensBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //ask for password?
+            pwGrid.Visibility = Visibility.Visible;
+            pwText.Focus(FocusState.Keyboard);
+        }
+
+        private void pwButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (pwText.Password.Equals("1234"))
+            {
+                Frame.Navigate(typeof(AdminPage));
+            }
+            else
+            {
+                pwGrid.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void pwText_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                pwButton_Click(null, null);
+            }
+        }
+    }
 }
