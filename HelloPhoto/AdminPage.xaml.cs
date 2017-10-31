@@ -46,9 +46,22 @@ namespace HelloPhoto
                         eventDropdown.SelectedIndex = x;
                     }
                 }
+                
+                useOverlay.IsChecked = AdminSettings.UseOverlay;
+                useSplash.IsChecked = AdminSettings.UseSplash;
+                enableFaceReg.IsChecked = AdminSettings.EnableFaceReg;
 
                 ledBrightness.Value = AdminSettings.LEDBrightness;
             }
+
+            var comPorts = new List<string>();
+            for (int x = 0; x < 6; x++)
+            {
+                comPorts.Add($"COM{x}");
+            }
+
+            arduinoComDrp.ItemsSource = comPorts;
+            arduinoComDrp.SelectedIndex = AdminSettings.ComPort;
 
             _pageLoading = false;
         }
@@ -89,6 +102,9 @@ namespace HelloPhoto
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
+            AdminSettings.UseOverlay = useOverlay.IsChecked.Value;
+            AdminSettings.UseSplash = useSplash.IsChecked.Value;
+            AdminSettings.EnableFaceReg = enableFaceReg.IsChecked.Value;
             Frame.Navigate(typeof(MainPage));
         }
         
@@ -104,6 +120,16 @@ namespace HelloPhoto
             var output = new WriteableBitmap((int)decoder.PixelHeight, (int)decoder.PixelWidth);
             await output.SetSourceAsync(image);
             return output;
+        }
+
+        private void enableFaceReg_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void arduinoComDrp_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AdminSettings.ComPort = arduinoComDrp.SelectedIndex;
         }
     }
 }

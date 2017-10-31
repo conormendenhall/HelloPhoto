@@ -61,6 +61,15 @@
             <PasswordBox x:Name="pwText" HorizontalAlignment="Left" FontSize="30" Margin="10,10,0,0" PlaceholderText="Password" VerticalAlignment="Top" Height="59" Width="220" KeyUp="pwText_KeyUp"/>
             <Button x:Name="pwButton" Content="Submit" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="220" Click="pwButton_Click"/>
         </Grid>
+        <Button x:Name="registerFace"
+            Content="Register Your Face"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            FontSize="60"
+            Foreground="White"
+            FontWeight="Thin"
+            Margin="0,10,10,0"
+            Background="#EC2B8C" Click="registerFace_Click" />
 
     </Grid>
 </Page>

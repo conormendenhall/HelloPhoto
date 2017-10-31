@@ -3,12 +3,14 @@ using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 using Amazon;
 using Amazon.Runtime;
 using HelloPhoto.Repositories;
@@ -25,7 +27,7 @@ namespace HelloPhoto
             var client = new HttpClient();
             {
                 var friendlyFilename = Path.GetFileName(photo.FilePath);
-                client.Timeout = TimeSpan.FromSeconds(15);
+                client.Timeout = TimeSpan.FromSeconds(25);
 
                 client.BaseAddress = new Uri("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/");
 
@@ -47,6 +49,39 @@ namespace HelloPhoto
 
                 Console.WriteLine($"{(int)result.StatusCode} - {result.StatusCode.ToString()}");
                 Console.WriteLine("sxm result message: " + result.Content.ReadAsStringAsync().Result);
+            }
+        }
+
+
+        public void RegisterFace(Models.FaceOff photo)
+        {
+            var client = new HttpClient();
+            {
+                var friendlyFilename = Path.GetFileName(photo.FilePath);
+                client.Timeout = TimeSpan.FromSeconds(35);
+
+                client.BaseAddress = new Uri("http://hellophotoapi-prod.us-east-1.elasticbeanstalk.com/");
+
+                var fileData = new ByteArrayContent(File.ReadAllBytes(photo.FilePath));
+
+                var multiContent = new MultipartFormDataContent
+                {
+                    {new StringContent(photo.FirstName), "FirstName" },
+                    {new StringContent(photo.LastName), "LastName" },
+                    {new StringContent(photo.Email), "Email" },
+                    {new StringContent("TSFaces"), "CollectionName" },
+                    {fileData, "file", friendlyFilename }
+                };
+
+                //this filename needs to match the name specified in the agreement.
+                //for awareness, name=file1 is just a field name like from a form. Might not need this, 
+                //but mvc core api requires the name field to see the file
+                multiContent.Headers.Add("Content-Disposition", "form-data; file=\"" + friendlyFilename + "\"");
+                    
+                //red rover, red rover, send the data over
+                var resultPre = client.PostAsync("api/facewatch/", multiContent);
+
+                var result = resultPre.Result;
             }
         }
 

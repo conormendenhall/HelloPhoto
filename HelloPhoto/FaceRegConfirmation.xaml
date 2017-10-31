@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="HelloPhoto.Confirmation"
+    x:Class="HelloPhoto.FaceRegConfirmation"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:HelloPhoto"
@@ -15,45 +15,18 @@
             Name="ConfirmationPhoto"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Width="1400"
+            Width="1600"
             Margin="0,0,0,0"/>
-        <Image
-            Name="OverlayPhoto"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Width="1400"
-            Margin="0,0,0,0"/>
-
-
+        
         <TextBlock x:Name="countdown"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             TextAlignment="Center"
-            FontSize="50"
-            Text="Thanks! Your photo will be tweeted shortly!"
-            Foreground="#EC2B8C"/>
-        
-        <TextBlock
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            TextAlignment="Center"
-            Height="176"
-            Width="658"
-            FontSize="72"
-            Text="@IOTPhotoKiosk"
-            Foreground="#EC2B8C"
-            Margin="0,0,0,-40"/>
-        
-        <TextBlock x:Name="hashtags"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            TextAlignment="Center"
-            Text="#Occasions"
-            Height="176"
-            Width="614"
-            FontSize="72"
-            Foreground="#EC2B8C"
-            Margin="0,0,0,-40"/>
+            TextWrapping="WrapWholeWords"
+            FontSize="70"
+                   Margin="200,0,0,0"
+            Text="Thanks! You have been added! Next time you want a photo sent to you, just skip the email page"
+            Foreground="#EC2B8C" />
 
         <Button
             Click="HomeButton_Click"

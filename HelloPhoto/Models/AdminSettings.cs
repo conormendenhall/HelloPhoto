@@ -6,5 +6,13 @@
 
         public static Event Event { get; set; }
 
+        public static bool UseSplash { get; set; } = true;
+
+        public static bool UseOverlay { get; set; } = true;
+
+        public static bool EnableFaceReg { get; set; } = true;
+
+        public static int ComPort { get; set; } = 3;
+
     }
 }

@@ -8,6 +8,7 @@ using Windows.Data.Json;
 using Windows.Security.Cryptography.Certificates;
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
+using HelloPhoto.Models;
 using HttpClient = Windows.Web.Http.HttpClient;
 using UnicodeEncoding = Windows.Storage.Streams.UnicodeEncoding;
 
@@ -26,9 +27,9 @@ namespace HelloPhoto.Repositories
 
             var x = new {
                 image = id,
-                hashtag = (MainPage.EventData?.TwitterHashTag ?? "FunWithIoT")};
+                hashtag = (AdminSettings.Event?.TwitterHashTag ?? "FunWithIoT")};
             
-            var stringContent = new HttpStringContent("\"{\'image\':\'"+id+"\',\'hashtag\':\'"+ (MainPage.EventData?.TwitterHashTag ?? "FunWithIoT") + "\'}\"", UnicodeEncoding.Utf8, "application/json");
+            var stringContent = new HttpStringContent("\"{\'image\':\'"+id+"\',\'hashtag\':\'"+ (AdminSettings.Event?.TwitterHashTag ?? "FunWithIoT") + "\'}\"", UnicodeEncoding.Utf8, "application/json");
             var result =
                 await client.PostAsync(new Uri("https://8kasriow2b.execute-api.us-east-2.amazonaws.com/Prod/twitter"), stringContent);
             

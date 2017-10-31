@@ -12,7 +12,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Slider x:Name="ledBrightness" HorizontalAlignment="Left" Margin="66,354,0,0" VerticalAlignment="Top" Width="452" Height="38" Value="100" ValueChanged="ledBrightness_ValueChanged"/>
         <TextBlock HorizontalAlignment="Center" FontSize="70"  Margin="0,50,0,0" TextWrapping="Wrap" Text="Administration" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,297,0,0" TextWrapping="Wrap" Text="LED Brightness" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,303,0,0" TextWrapping="Wrap" Text="LED Brightness" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,548,0,0" TextWrapping="Wrap" Text="Event" VerticalAlignment="Top"/>
         <ComboBox x:Name="eventDropdown" HorizontalAlignment="Left" FontSize="30" Margin="66,606,0,0" VerticalAlignment="Top" Width="452" SelectionChanged="eventDropdown_SelectionChanged"/>
         <Button x:Name="homeBtn" Content="Home" FontSize="50" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Click="homeBtn_Click"/>
@@ -25,6 +25,11 @@
         <TextBlock x:Name="eventHashtag" FontSize="40" HorizontalAlignment="Left" Margin="66,720,0,0" TextWrapping="Wrap" Text="#EventHashTag" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="693,200,0,0" TextWrapping="Wrap" Text="Photo Overlay:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="725,675,0,0" TextWrapping="Wrap" Text="Kiosk Splash:" VerticalAlignment="Top"/>
+        <CheckBox x:Name="useOverlay" Content="Use" FontSize="40" HorizontalAlignment="Left" Margin="832,256,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="useSplash" Content="Use" FontSize="40" HorizontalAlignment="Left" Margin="832,740,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="enableFaceReg" Content="Enable Face Registration" FontSize="40" HorizontalAlignment="Left" Margin="66,470,0,0" VerticalAlignment="Top" IsChecked="True" Checked="enableFaceReg_Checked"/>
+        <ComboBox x:Name="arduinoComDrp" HorizontalAlignment="Left" FontSize="30" Margin="66,200,0,0" VerticalAlignment="Top" Width="452" SelectionChanged="arduinoComDrp_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,135,0,0" TextWrapping="Wrap" Text="Arduino COM" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

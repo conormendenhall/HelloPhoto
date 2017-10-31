@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="HelloPhoto.FaceOff"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloPhoto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="1920"
+    Height="1080">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontSize="80" Margin="0,20,0,0" TextWrapping="Wrap" Text="Register Your Face" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontSize="50" Margin="10,140,0,0" TextWrapping="Wrap" Text="Registering your face will allow you to use our kiosk without having to enter your email address! We will automatically detect who you are and send the photo to you. We do not save this photo, we only store information to help recognize you." VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,30,58" FontSize="40" TextWrapping="Wrap" Text="Powered by AWS Rekognition" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="FirstNameTxt" HorizontalAlignment="Left" Margin="424,517,0,0" FontSize="50" TextWrapping="Wrap" PlaceholderText="First Name" VerticalAlignment="Top" Width="631"/>
+        <TextBlock HorizontalAlignment="Left" Margin="41,517,0,0" FontSize="50" TextWrapping="Wrap" TextAlignment="Right" Text="First Name:" VerticalAlignment="Top" Width="378"/>
+        <TextBox x:Name="LasttNameTxt" HorizontalAlignment="Left" Margin="424,617,0,0" FontSize="50" TextWrapping="Wrap" PlaceholderText="Last Name" VerticalAlignment="Top" Width="631"/>
+        <TextBlock HorizontalAlignment="Left" Margin="41,617,0,0" FontSize="50" TextWrapping="Wrap" TextAlignment="Right" Text="Last Name:" VerticalAlignment="Top" Width="378"/>
+        <TextBox x:Name="EmailTxt" HorizontalAlignment="Left" Margin="424,717,0,0" FontSize="50" TextWrapping="Wrap" PlaceholderText="Email" VerticalAlignment="Top" Width="631"/>
+        <TextBlock HorizontalAlignment="Left" Margin="41,717,0,0" FontSize="50" TextWrapping="Wrap" TextAlignment="Right" Text="Email:" VerticalAlignment="Top" Width="378"/>
+        <Button x:Name="goBtn" Content="Submit and Take Photo!" FontSize="60" HorizontalAlignment="Left" Margin="1163,517,0,0" VerticalAlignment="Top" Width="726" Height="279" Click="goBtn_Click"/>
+        <Button Content="Cancel" Background="Red" Foreground="White" FontWeight="Bold" FontSize="40" HorizontalAlignment="Left" Margin="41,968,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBlock x:Name="errorTxt" HorizontalAlignment="Left" TextAlignment="Right" FontSize="35" Foreground="Red" Margin="140,393,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="99" Width="915"/>
+
+    </Grid>
+</Page>

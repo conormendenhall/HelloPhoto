@@ -19,6 +19,14 @@ namespace HelloPhoto
 		{
 			InitializeComponent();
 		    submitButton.Visibility = Visibility.Visible;
+		    if (AdminSettings.EnableFaceReg)
+		    {
+		        registerFace.Visibility = Visibility.Visible;
+		    }
+		    else
+		    {
+		        registerFace.Visibility = Visibility.Collapsed;
+            }
         }
 
 		#region Navigation
@@ -46,7 +54,7 @@ namespace HelloPhoto
 			{
 				Id = Guid.NewGuid().ToString(),
 				Email = string.IsNullOrWhiteSpace(EmailInput?.Text) ? "photobooth_image" : EmailInput.Text,
-                EventId = MainPage.EventData?.EventId ?? "NoEventIdSadFace"
+                EventId = AdminSettings.Event?.EventId ?? "NoEventIdSadFace"
 			};
 
 			return await _repo.Save(contact);
@@ -77,6 +85,11 @@ namespace HelloPhoto
             {
                 pwButton_Click(null, null);
             }
+        }
+
+        private void registerFace_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(FaceOff));
         }
     }
 }

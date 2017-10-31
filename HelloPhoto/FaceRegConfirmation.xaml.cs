@@ -20,19 +20,18 @@ namespace HelloPhoto
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
-	public sealed partial class Confirmation : Page
+	public sealed partial class FaceRegConfirmation : Page
 	{
 		private string _imagePath { get; set; }
         private DispatcherTimer _timer;
         private int _basetime;
 
-        public Confirmation()
+        public FaceRegConfirmation()
 		{
 			InitializeComponent();
             BeginTimer();
             ConfirmationPhoto.Loaded += ConfirmationPhoto_Loaded;
-
-		    hashtags.Text = AdminSettings.Event?.TwitterHashTag ?? "#FunWithIOT";
+            
 		}
         
         private void BeginTimer()
@@ -55,16 +54,7 @@ namespace HelloPhoto
                 image.SetSource(fileStream);
                 ConfirmationPhoto.Source = image;
             }
-
-		    if (AdminSettings.UseOverlay)
-		    {
-		        OverlayPhoto.Source = await FromBase64(AdminSettings.Event.LandingOverlayBytes);
-		        OverlayPhoto.Visibility = Visibility.Visible;
-		    }
-		    else
-		    {
-		        OverlayPhoto.Visibility = Visibility.Collapsed;
-		    }
+            
         }
         
 	    private async Task<ImageSource> FromBase64(byte[] bytes)
@@ -110,6 +100,7 @@ namespace HelloPhoto
 			Frame.Navigate(typeof(MainPage));
 		}
 
-		#endregion Navigation
-	}
+        #endregion Navigation
+        
+    }
 }

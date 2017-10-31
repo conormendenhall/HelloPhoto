@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>HelloPhoto_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>6776C27E4392819B5945038CCE01C576E4528030</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -104,11 +104,17 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CameraRotationHelper.cs" />
+    <Compile Include="FaceRegConfirmation.xaml.cs">
+      <DependentUpon>FaceRegConfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Confirmation.xaml.cs">
       <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="ErrorHandler.xaml.cs">
       <DependentUpon>ErrorHandler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FaceOff.xaml.cs">
+      <DependentUpon>FaceOff.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -117,9 +123,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminSettings.cs" />
+    <Compile Include="Models\CameraHelper.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\FaceOff.cs" />
     <Compile Include="Models\Photo.cs" />
+    <Compile Include="FaceRegistration.xaml.cs">
+      <DependentUpon>FaceRegistration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PhotoBooth.xaml.cs">
       <DependentUpon>PhotoBooth.xaml</DependentUpon>
     </Compile>
@@ -160,6 +171,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FaceRegConfirmation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Confirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,11 +183,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FaceOff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FaceRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,6 +1,7 @@
 ﻿using HelloPhoto.Models;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
@@ -31,11 +32,13 @@ namespace HelloPhoto
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
-	public sealed partial class PhotoBooth : Page
+	public sealed partial class FaceRegistration : Page
 	{
         // Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
         // Reference: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh868174.aspx
         private static readonly Guid RotationKey = new Guid("C380465D-2271-428C-9B83-ECEA3B4A85C1");
+
+	    private Models.FaceOff faceReg;
 
 		// Folder in which the captures will be stored (initialized in SetupUiAsync)
 		private StorageFolder _captureFolder = null;
@@ -70,7 +73,7 @@ namespace HelloPhoto
 
 		#region Constructor, lifecycle and navigation
 
-		public PhotoBooth()
+		public FaceRegistration()
 		{
 			this.InitializeComponent();
 		}
@@ -104,10 +107,9 @@ namespace HelloPhoto
 			Application.Current.Resuming += Application_Resuming;
 			Window.Current.VisibilityChanged += Window_VisibilityChanged;
 
-			var contact = e.Parameter as Contact;
+			faceReg = e.Parameter as Models.FaceOff;
 
 			_isActivePage = true;
-			_contactId = contact?.Id ?? "contactId";
 
 			await SetUpBasedOnStateAsync();
 		}
@@ -475,26 +477,33 @@ namespace HelloPhoto
 				var photoOrientation = CameraRotationHelper.ConvertSimpleOrientationToPhotoOrientation(_rotationHelper.GetCameraCaptureOrientation());
 
 				await ReencodeAndSavePhotoAsync(stream, file, photoOrientation);
-                
-                this.Frame.Navigate(typeof(Confirmation), file.Path);
 
-                Debug.WriteLine("Photo saved!");
+			    Debug.WriteLine("Photo saved!");
 
-				Task.Run(() =>
-				{
-					var _photoRepo = new PhotoRepository();
-					_photoRepo.Save(new Photo()
-					{
-						PhotoId = _contactId,
-						FilePath = file.Path,
-					});
-				});
+			    Task.Run(() =>
+			    {
+			        faceReg.FilePath = file.Path;
+
+			        var photoRepo = new PhotoRepository();
+			        photoRepo.RegisterFace(faceReg);
+			    });
+
+			    this.Frame.Navigate(typeof(FaceRegConfirmation), file.Path);
 			}
 			catch (Exception ex)
 			{
 				// File I/O errors are reported as exceptions
 				Debug.WriteLine("Exception when taking a photo: " + ex.ToString());
-			}
+
+			    try
+			    {
+			        File.WriteAllText(Path.Combine(KnownFolders.CameraRoll.Path, "kiosk", "Exception.txt"), $"Info about send: {ex.Message}");
+			    }
+			    catch (Exception exception)
+			    {
+			        // ignore
+			    }
+            }
 
 			// Done taking a photo, so re-enable the button
 			//VideoButton.IsEnabled = true;

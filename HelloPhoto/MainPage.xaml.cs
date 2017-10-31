@@ -35,9 +35,7 @@ namespace HelloPhoto
 {
     public sealed partial class MainPage : Page
     {
-        public static Event EventData;
-
-		// Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
+        // Rotation metadata to apply to the preview stream and recorded videos (MF_MT_VIDEO_ROTATION)
 		// Reference: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh868174.aspx
 		private static readonly Guid RotationKey = new Guid("C380465D-2271-428C-9B83-ECEA3B4A85C1");
 
@@ -162,19 +160,14 @@ namespace HelloPhoto
 
         private async void LoadEvent()
         {
-            if (EventData == null)
+            if (AdminSettings.UseSplash)
             {
-                try
-                {
-                    EventData = new EventRepository().Get().Result.FirstOrDefault();
-
-                    //overlayImg.Source = await FromBase64(EventData.LandingOverlayBytes);
-                    //overlayImg.Visibility = Visibility.Visible;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                overlayImg.Source = await FromBase64(AdminSettings.Event.LandingOverlayBytes);
+                overlayImg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                overlayImg.Visibility = Visibility.Collapsed;
             }
         }
 

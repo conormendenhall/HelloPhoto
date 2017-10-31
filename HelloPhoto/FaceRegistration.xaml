@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="HelloPhoto.FaceRegistration"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HelloPhoto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="1920"
+    Height="1080"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <!--Camera preview-->
+        <CaptureElement Name="PreviewControl" Stretch="Uniform"/>
+
+        <!--Overlay-->
+        <!--<Image Source="Assets/tech-con-transparent.png" HorizontalAlignment="Left" Height="1054" VerticalAlignment="Top" Width="1920" Margin="0,486,0,-460"/>-->
+
+        <TextBlock
+            Name="PhotoMessage"
+            Text="Touch screen to start photo timer!     Please only have one person in the photo"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            TextWrapping="WrapWholeWords"
+            TextAlignment="Center"
+            FontSize="95"
+            Foreground="#EC2B8C"
+            FontWeight="Bold"
+            Margin="5,0,5,0"
+            Height="400"/>
+
+        <Button
+            Click="PhotoButton_Click"
+            Name="PhotoButton"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontSize="100"
+            Foreground="#FFFF00B9"
+            FontWeight="Bold"
+            Background="Transparent"/>
+
+        <Button x:Name="homeBtn"
+            Click="HomeButton_Click"
+            Content="Cancel"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Height="135"
+            FontSize="72"
+            Background="Black"
+            Foreground="White" />
+
+        <TextBlock
+            Name="Countdown"
+            FontSize="400"
+            Foreground="#FFFF00B9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <TextBlock x:Name="debugtxt"  HorizontalAlignment="Left"
+                   Foreground="#FFFF00B9" Margin="0,150,0,0" TextWrapping="Wrap" FontSize="30"  Text="debug info" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
