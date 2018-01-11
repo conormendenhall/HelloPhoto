@@ -74,6 +74,8 @@ namespace HelloPhoto
             
             LoadEvent();
 
+            DemoModeBlock.Visibility = AdminSettings.ProdEnabled ? Visibility.Collapsed : Visibility.Visible;
+
 			// Do not cache the state of the UI when suspending/navigating
 			NavigationCacheMode = NavigationCacheMode.Disabled;
 		}

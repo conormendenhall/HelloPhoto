@@ -8,5 +8,6 @@
 		public string LastName { get; set; }
 
 	    public string EventId { get; set; }
+        public bool ProdEnabled { get; set; }
 	}
 }

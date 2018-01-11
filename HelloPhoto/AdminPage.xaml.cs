@@ -50,6 +50,7 @@ namespace HelloPhoto
                 useOverlay.IsChecked = AdminSettings.UseOverlay;
                 useSplash.IsChecked = AdminSettings.UseSplash;
                 enableFaceReg.IsChecked = AdminSettings.EnableFaceReg;
+                prodEnabled.IsChecked = AdminSettings.ProdEnabled;
 
                 ledBrightness.Value = AdminSettings.LEDBrightness;
             }
@@ -105,6 +106,7 @@ namespace HelloPhoto
             AdminSettings.UseOverlay = useOverlay.IsChecked.Value;
             AdminSettings.UseSplash = useSplash.IsChecked.Value;
             AdminSettings.EnableFaceReg = enableFaceReg.IsChecked.Value;
+            AdminSettings.ProdEnabled = prodEnabled.IsChecked.Value;
             Frame.Navigate(typeof(MainPage));
         }
         
@@ -130,6 +132,10 @@ namespace HelloPhoto
         private void arduinoComDrp_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AdminSettings.ComPort = arduinoComDrp.SelectedIndex;
+        }
+
+        private void ProdEnabled_OnChecked(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

@@ -58,7 +58,7 @@ namespace HelloPhoto
 
 		    if (AdminSettings.UseOverlay)
 		    {
-		        OverlayPhoto.Source = await FromBase64(AdminSettings.Event.LandingOverlayBytes);
+		        OverlayPhoto.Source = await FromBase64(AdminSettings.Event.ImageOverlayBytes);
 		        OverlayPhoto.Visibility = Visibility.Visible;
 		    }
 		    else

@@ -50,10 +50,10 @@
             TextAlignment="Center"
             Text="#Occasions"
             Height="176"
-            Width="614"
+            Width="870"
             FontSize="72"
             Foreground="#EC2B8C"
-            Margin="0,0,0,-40"/>
+            Margin="0,0,8,-40"/>
 
         <Button
             Click="HomeButton_Click"

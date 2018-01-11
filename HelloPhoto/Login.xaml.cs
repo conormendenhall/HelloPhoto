@@ -54,7 +54,8 @@ namespace HelloPhoto
 			{
 				Id = Guid.NewGuid().ToString(),
 				Email = string.IsNullOrWhiteSpace(EmailInput?.Text) ? "photobooth_image" : EmailInput.Text,
-                EventId = AdminSettings.Event?.EventId ?? "NoEventIdSadFace"
+                EventId = AdminSettings.Event?.EventId ?? "NoEventIdSadFace",
+                ProdEnabled = AdminSettings.ProdEnabled
 			};
 
 			return await _repo.Save(contact);

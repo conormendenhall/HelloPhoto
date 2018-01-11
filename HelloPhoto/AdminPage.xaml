@@ -15,19 +15,20 @@
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,303,0,0" TextWrapping="Wrap" Text="LED Brightness" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,548,0,0" TextWrapping="Wrap" Text="Event" VerticalAlignment="Top"/>
         <ComboBox x:Name="eventDropdown" HorizontalAlignment="Left" FontSize="30" Margin="66,606,0,0" VerticalAlignment="Top" Width="452" SelectionChanged="eventDropdown_SelectionChanged"/>
-        <Button x:Name="homeBtn" Content="Home" FontSize="50" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Click="homeBtn_Click"/>
+        <Button x:Name="homeBtn" Content="Save" FontSize="50" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Click="homeBtn_Click"/>
         <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="400" Margin="957,200,0,0" VerticalAlignment="Top" Width="656" >
             <Image x:Name="OverlayImg"/>
         </Border>
         <Border BorderThickness="1" BorderBrush="Black"  HorizontalAlignment="Left" Height="400" Margin="957,675,0,0" VerticalAlignment="Top" Width="656">
             <Image x:Name="EventImg"/>
         </Border>
-        <TextBlock x:Name="eventHashtag" FontSize="40" HorizontalAlignment="Left" Margin="66,720,0,0" TextWrapping="Wrap" Text="#EventHashTag" VerticalAlignment="Top"/>
+        <TextBlock x:Name="eventHashtag" FontSize="40" HorizontalAlignment="Left" Margin="66,675,0,0" TextWrapping="Wrap" Text="#EventHashTag" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="693,200,0,0" TextWrapping="Wrap" Text="Photo Overlay:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="725,675,0,0" TextWrapping="Wrap" Text="Kiosk Splash:" VerticalAlignment="Top"/>
         <CheckBox x:Name="useOverlay" Content="Use" FontSize="40" HorizontalAlignment="Left" Margin="832,256,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="useSplash" Content="Use" FontSize="40" HorizontalAlignment="Left" Margin="832,740,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="enableFaceReg" Content="Enable Face Registration" FontSize="40" HorizontalAlignment="Left" Margin="66,470,0,0" VerticalAlignment="Top" IsChecked="True" Checked="enableFaceReg_Checked"/>
+        <CheckBox x:Name="prodEnabled" Content="Enable Production Twitter" FontSize="40" HorizontalAlignment="Left" Margin="66,788,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ProdEnabled_OnChecked"/>
         <ComboBox x:Name="arduinoComDrp" HorizontalAlignment="Left" FontSize="30" Margin="66,200,0,0" VerticalAlignment="Top" Width="452" SelectionChanged="arduinoComDrp_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" FontSize="40" Margin="66,135,0,0" TextWrapping="Wrap" Text="Arduino COM" VerticalAlignment="Top"/>
 

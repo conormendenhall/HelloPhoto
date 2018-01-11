@@ -3,17 +3,9 @@ using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using Windows.Storage;
-using Windows.UI.Xaml.Controls;
 using Amazon;
-using Amazon.Runtime;
-using HelloPhoto.Repositories;
 
 namespace HelloPhoto
 {

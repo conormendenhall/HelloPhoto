@@ -15,6 +15,12 @@
         <CaptureElement Name="PreviewControl" Stretch="Uniform"/>
 
         <!--Overlay-->
+        <Image
+            Name="OverlayPhoto"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="0"/>
+        
         <!--<Image Source="Assets/tech-con-transparent.png" HorizontalAlignment="Left" Height="1054" VerticalAlignment="Top" Width="1920" Margin="0,486,0,-460"/>-->
 
         <Button

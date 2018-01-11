@@ -1,7 +1,9 @@
 ﻿using HelloPhoto.Models;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Devices.Enumeration;
@@ -22,6 +24,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -73,9 +76,36 @@ namespace HelloPhoto
 		public PhotoBooth()
 		{
 			this.InitializeComponent();
-		}
 
-		private void Application_Suspending(object sender, SuspendingEventArgs e)
+		    if (AdminSettings.UseOverlay)
+		    {
+		        Dispatcher.RunAsync(CoreDispatcherPriority.High, async () =>
+		        {
+		            OverlayPhoto.Source = await FromBase64(AdminSettings.Event.ImageOverlayBytes);
+		        });
+
+		        OverlayPhoto.Visibility = Visibility.Visible;
+		    }
+		    else
+		    {
+		        OverlayPhoto.Visibility = Visibility.Collapsed;
+		    }
+        }
+	    private async Task<ImageSource> FromBase64(byte[] bytes)
+	    {
+	        var image = bytes.AsBuffer().AsStream().AsRandomAccessStream();
+
+	        // decode image
+	        var decoder = await BitmapDecoder.CreateAsync(image);
+	        image.Seek(0);
+
+	        // create bitmap
+	        var output = new WriteableBitmap((int)decoder.PixelHeight, (int)decoder.PixelWidth);
+	        await output.SetSourceAsync(image);
+	        return output;
+	    }
+
+        private void Application_Suspending(object sender, SuspendingEventArgs e)
 		{
 			_isSuspending = false;
 

@@ -28,13 +28,27 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             TextWrapping="Wrap"
-            Text="Touch screen to take photo"
+            Text="Touch screen to start!"
             Height="208"
             Width="1920"
             FontSize="100"
             TextAlignment="Center"
             Foreground="#EC2B8C" 
             Margin="0,0,0,-40"/>
+
+        <TextBlock
+            x:Name="DemoModeBlock"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap"
+            Text="-- DEV MODE --"
+            Height="208"
+            Width="1920"
+            FontSize="100"
+            TextAlignment="Center"
+            Foreground="#EC2B8C" 
+            Margin="0,0,0,-40"/>
+
 
         <HyperlinkButton
             Click="HyperlinkButton_Click"

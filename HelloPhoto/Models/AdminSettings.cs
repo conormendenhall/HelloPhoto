@@ -14,5 +14,7 @@
 
         public static int ComPort { get; set; } = 3;
 
+        public static bool ProdEnabled { get; set; } = false;
+
     }
 }
